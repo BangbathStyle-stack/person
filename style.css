@@ -109,7 +109,7 @@ section {
   position: absolute;
   inset: 4px;          /* ปรับความหนาขอบได้ */
   border-radius: 50%;
-  background: #fff;
+  background: #ffff;
   z-index: 1;
 }
 
