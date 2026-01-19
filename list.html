@@ -27,27 +27,24 @@ body{margin:0;font-family:'Segoe UI',sans-serif;background:radial-gradient(circl
 </head>
 <body>
 
-<div class="header">
-  <h1>Person List</h1>
-  <div class="search-box">
-    <input type="text" id="search" placeholder="ค้นหารายชื่อ..." onkeyup="render()">
+<section>
+
+  <div class="section">
+    <div class="section-title">Leader</div>
+    <div class="grid" id="leader"></div>
   </div>
-</div>
 
-<div class="section">
-  <div class="section-title">Leader</div>
-  <div class="grid" id="leader"></div>
-</div>
+  <div class="section">
+    <div class="section-title">Member</div>
+    <div class="grid" id="member"></div>
+  </div>
 
-<div class="section">
-  <div class="section-title">Member</div>
-  <div class="grid" id="member"></div>
-</div>
+  <div class="section">
+    <div class="section-title">Member Lady</div>
+    <div class="grid" id="member-lady"></div>
+  </div>
 
-<div class="section">
-  <div class="section-title">Member Lady</div>
-  <div class="grid" id="member-lady"></div>
-</div>
+</section>
 
 <script>
 const people=[
