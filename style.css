@@ -260,6 +260,6 @@ button:hover {
   background: rgba(0, 0, 0, 0.75); /* สีพื้นหลัง */
   border-radius: 20px;
   padding: 30px;
-  box-shadow: 0 0 40px rgba(255, 0, 0, 0.15);
+  box-shadow: 0 0 40px rgba(240, 248, 255));
 }
 
