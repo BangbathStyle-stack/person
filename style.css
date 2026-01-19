@@ -141,3 +141,27 @@ footer {
   padding: 30px;
   opacity: 0.6;
 }
+
+/* ================= GRID ================= */
+.grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  margin: 20px 0 40px;
+}
+
+/* ================= SORT ORDER ================= */
+/* default = Member */
+.card{
+  order: 2;
+}
+
+/* Leader มาก่อน */
+.card.leader{
+  order: 1;
+}
+
+/* Member Lady มาหลัง Member */
+.card.member-lady{
+  order: 3;
+}
