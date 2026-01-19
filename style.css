@@ -81,7 +81,6 @@ section {
   margin-bottom: 30px;
 }
 
-/* === AVATAR === */
 .avatar {
   width: 90px;
   height: 90px;
@@ -89,7 +88,7 @@ section {
   overflow: hidden;
   margin: auto;
 
-  background: #fff; /* ← ข้างในเป็นสีขาว */
+  background: #fff;
   box-shadow: 0 0 15px rgba(255, 0, 0, 0.35);
 }
 
