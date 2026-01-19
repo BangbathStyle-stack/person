@@ -175,3 +175,34 @@ footer {
 .card.member-lady{
   order: 3;
 }
+
+/* === FULL BACKGROUND IMAGE === */
+.bg {
+  position: fixed;
+  inset: 0;
+  background: url("https://cdn.discordapp.com/attachments/1454149098763718870/1462679486620373083/Bangbathbxy1.jpg") center / cover no-repeat;
+  z-index: -2;
+}
+
+/* เงาทับภาพ */
+.bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+}
+
+/* จัด Welcome กลางจอ */
+.landing {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ตัวเนื้อหา */
+.overlay {
+  text-align: center;
+  color: #fff;
+  z-index: 1;
+}
