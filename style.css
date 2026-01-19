@@ -251,3 +251,9 @@ button:hover {
   background: rgba(255,255,255,0.2);
 }
 
+.gang-title {
+  color: #a855f7; /* เปลี่ยนสีตรงนี้ */
+  text-shadow: 0 0 12px rgba(168,85,247,0.6);
+}
+
+
