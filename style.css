@@ -142,6 +142,16 @@ footer {
   opacity: 0.6;
 }
 
+.header{
+  text-align:center;
+  padding:80px 20px;
+  background:
+    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+    url('https://cdn.discordapp.com/attachments/1454149098763718870/1462679486620373083/Bangbathbxy1.jpg')
+    center/cover no-repeat;
+}
+
+
 /* ================= GRID ================= */
 .grid{
   display: grid;
