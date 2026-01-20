@@ -238,7 +238,29 @@ cursor:pointer;
 
 <!-- ===== SCRIPT ของคุณ (ไม่แตะ) ===== -->
 <script>
-/* โค้ดเดิมของคุณอยู่ครบ */
+const music = document.getElementById("bg-music");
+const playBtn = document.getElementById("playBtn");
+const volume = document.getElementById("volume");
+const label = document.getElementById("vol-label");
+
+music.volume = volume.value / 100;
+
+/* PLAY / PAUSE */
+playBtn.onclick = () => {
+  if (music.paused) {
+    music.play();
+    playBtn.textContent = "❚❚";
+  } else {
+    music.pause();
+    playBtn.textContent = "▶";
+  }
+};
+
+/* VOLUME CONTROL */
+volume.oninput = () => {
+  music.volume = volume.value / 100;
+  label.textContent = volume.value + "%";
+};
 </script>
 
 <div class="footer">© 2026 Bangbathbxy</div>
