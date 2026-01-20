@@ -198,27 +198,41 @@ let people=JSON.parse(localStorage.getItem('people'))||[
  {name:'test',role:'Member',img:'avatar1.jpg',fb:'#'}
 ];
 
-function render(){
- const q=(search.value||'').toLowerCase();
- leader.innerHTML=member.innerHTML=rookie.innerHTML='';
- people.filter(p=>p.name.toLowerCase().includes(q)).forEach(p=>{
-  const div=document.createElement('div');
-  div.className='card '+p.role.toLowerCase();
-  div.innerHTML=`
-   <div class="avatar"><span class="crown">👑</span><img src="${p.img}"></div>
-   <div class="name">${p.name}</div>
-   <div class="role">${p.role}</div>
-   <div class="social"><a href="${p.fb}" target="_blank">Facebook</a></div>`;
-  (p.role==='Leader'?leader:p.role==='Member'?member:rookie).appendChild(div);
- });
- localStorage.setItem('people',JSON.stringify(people));
-}
-render();
 
-function openAdmin(){adminPanel.style.display='flex'}
-function login(){if(adminPass.value===ADMIN_PASSWORD){loginBox.style.display='none';manageBox.style.display='block'}else alert('รหัสไม่ถูกต้อง')}
-function logout(){adminPanel.style.display='none';loginBox.style.display='block';manageBox.style.display='none'}
-function addPerson(){people.push({name:nameInput.value,role:roleInput.value,img:imgInput.value,fb:fbInput.value});render()}
+function render(){
+  const q = document.getElementById('search').value.toLowerCase();
+
+  leader.innerHTML = '';
+  bangbathbxy.innerHTML = '';
+  bangbathbxby.innerHTML = '';
+  member.innerHTML = '';
+
+  people
+    .filter(p => p.name.toLowerCase().includes(q))
+    .forEach(p => {
+
+      const isLeader = p.role === 'Leader';		
+
+      const card = `
+      <div class="card ${isLeader ? 'leader' : ''}">
+        <div class="avatar">
+          <img src="${p.img}">
+        </div>
+        <div class="name">${p.name}</div>
+        <div class="role">${p.role}</div>
+        <div class="social">
+          <a href="${p.fb}" target="_blank">Facebook</a>
+        </div>
+      </div>`;
+
+      if(p.role === 'Leader') leader.innerHTML += card;
+      else if(p.role === 'Bangbathbxy') bangbathbxy.innerHTML += card;
+      else if(p.role === 'Bangbathbxby') bangbathbxby.innerHTML += card;
+      else member.innerHTML += card;
+    });
+}
+
+render();
 </script>
 
 <div class="footer">© 2026 Bangbathbxy</div>
