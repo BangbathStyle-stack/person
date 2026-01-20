@@ -79,11 +79,8 @@ body{
   background:
     radial-gradient(circle at center,#383838,transparent 65%),
     linear-gradient(135deg,#fff,#333);
-  box-shadow:
-    0 0 15px #b8b8b8,
-    0 0 30px #fff;
+  box-shadow:0 0 15px #b8b8b8,0 0 30px #fff;
 }
-
 .avatar img{
   width:100%;
   height:100%;
@@ -91,11 +88,10 @@ body{
   object-fit:cover;
 }
 
-/* ---------- LEADER EFFECT ---------- */
+/* ---------- LEADER EFFECT ขั้นเทพ ---------- */
 .card.leader{
   animation:leaderPulse 2.5s infinite;
 }
-
 @keyframes leaderPulse{
   0%{box-shadow:0 0 25px #ffd700}
   50%{box-shadow:0 0 70px #ff3b3b}
@@ -106,9 +102,7 @@ body{
   background:
     radial-gradient(circle,#ffd70055,transparent 65%),
     linear-gradient(135deg,#ffd700,#ff3b3b);
-  box-shadow:
-    0 0 20px #ffd700,
-    0 0 45px #ff3b3b;
+  box-shadow:0 0 20px #ffd700,0 0 45px #ff3b3b;
 }
 
 .card.leader .avatar::before{
@@ -119,10 +113,7 @@ body{
   border:2px solid rgba(255,215,0,.8);
   animation:spin 6s linear infinite;
 }
-
-@keyframes spin{
-  to{transform:rotate(360deg)}
-}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 .card.leader .avatar::after{
   content:"👑";
@@ -133,7 +124,6 @@ body{
   font-size:28px;
   animation:crownFloat 2s ease-in-out infinite;
 }
-
 @keyframes crownFloat{
   0%,100%{transform:translate(-50%,0)}
   50%{transform:translate(-50%,-10px)}
@@ -154,13 +144,6 @@ body{
 .name{font-size:18px;font-weight:600}
 .role{font-size:14px;color:#ff5100}
 
-.footer{
-  text-align:center;
-  padding:30px;
-  color:#aaa;
-  font-size:14px
-}
-
 /* ---------- MUSIC PANEL ---------- */
 .music-panel{
   position:fixed;
@@ -176,7 +159,6 @@ body{
   backdrop-filter:blur(8px);
   z-index:9999;
 }
-
 .music-panel button{
   background:none;
   border:none;
@@ -184,9 +166,13 @@ body{
   font-size:18px;
   cursor:pointer;
 }
+.music-panel input{width:90px}
 
-.music-panel input{
-  width:90px;
+.footer{
+  text-align:center;
+  padding:30px;
+  color:#aaa;
+  font-size:14px
 }
 </style>
 </head>
@@ -207,39 +193,74 @@ body{
 <div class="header">
   <h1>Person List</h1>
   <div class="search-box">
-    <input type="text" placeholder="search....">
+    <input id="search" type="text" placeholder="search..." onkeyup="render()">
   </div>
 </div>
 
 <div class="section">
   <div class="section-title">Leader</div>
-  <div class="grid"></div>
+  <div class="grid" id="leader"></div>
+</div>
+
+<div class="section">
+  <div class="section-title">Bangbathbxy</div>
+  <div class="grid" id="bangbathbxy"></div>
+</div>
+
+<div class="section">
+  <div class="section-title">Bangbathbxby</div>
+  <div class="grid" id="bangbathbxby"></div>
+</div>
+
+<div class="section">
+  <div class="section-title">Member</div>
+  <div class="grid" id="member"></div>
 </div>
 
 <div class="footer">© 2026 Bangbathbxy</div>
 
 <script>
-const music = document.getElementById("bg-music");
-const playBtn = document.getElementById("playBtn");
-const volume = document.getElementById("volume");
-const label = document.getElementById("vol-label");
+/* ===== MUSIC CONTROL ===== */
+const music=document.getElementById("bg-music");
+const playBtn=document.getElementById("playBtn");
+const volume=document.getElementById("volume");
+const label=document.getElementById("vol-label");
 
-music.volume = volume.value / 100;
-
-playBtn.onclick = () => {
-  if (music.paused) {
-    music.play();
-    playBtn.textContent = "❚❚";
-  } else {
-    music.pause();
-    playBtn.textContent = "▶";
-  }
+music.volume=volume.value/100;
+playBtn.onclick=()=>{
+  if(music.paused){music.play();playBtn.textContent="❚❚"}
+  else{music.pause();playBtn.textContent="▶"}
+};
+volume.oninput=()=>{
+  music.volume=volume.value/100;
+  label.textContent=volume.value+"%";
 };
 
-volume.oninput = () => {
-  music.volume = volume.value / 100;
-  label.textContent = volume.value + "%";
-};
+/* ===== DATA + RENDER ===== */
+let people=[
+ {name:"Dekbangtlez",role:"Leader",img:"https://i.imgur.com/6VBx3io.png"},
+ {name:"Alpha",role:"Bangbathbxy",img:"https://i.imgur.com/6VBx3io.png"},
+ {name:"Beta",role:"Bangbathbxby",img:"https://i.imgur.com/6VBx3io.png"},
+ {name:"Gamma",role:"Member",img:"https://i.imgur.com/6VBx3io.png"}
+];
+
+function render(){
+ const q=search.value.toLowerCase();
+ leader.innerHTML=bangbathbxy.innerHTML=bangbathbxby.innerHTML=member.innerHTML="";
+ people.filter(p=>p.name.toLowerCase().includes(q)).forEach(p=>{
+  const d=document.createElement("div");
+  d.className="card "+p.role.toLowerCase();
+  d.innerHTML=`
+   <div class="avatar"><img src="${p.img}"></div>
+   <div class="name">${p.name}</div>
+   <div class="role">${p.role}</div>`;
+  if(p.role==="Leader")leader.appendChild(d);
+  else if(p.role==="Bangbathbxy")bangbathbxy.appendChild(d);
+  else if(p.role==="Bangbathbxby")bangbathbxby.appendChild(d);
+  else member.appendChild(d);
+ });
+}
+render();
 </script>
 
 </body>
