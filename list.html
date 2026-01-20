@@ -143,20 +143,7 @@ body{
 /* ---------- TEXT ---------- */
 .name{font-size:18px;font-weight:600}
 .role{font-size:14px;color:#ff5100}
-.social a{
-  display:inline-block;
-  margin-top:10px;
-  color:#1A70D9;
-  text-decoration:none;
-  font-size:14px
-}
 
-.footer{
-  text-align:center;
-  padding:30px;
-  color:#aaa;
-  font-size:14px
-} 
 /* ---------- MUSIC PANEL ---------- */
 .music-panel{
   position:fixed;
@@ -273,25 +260,42 @@ let people=[
 ];
 
 function render(){
- const q=search.value.toLowerCase();
- leader.innerHTML=bangbathbxy.innerHTML=bangbathbxby.innerHTML=member.innerHTML="";
- people.filter(p=>p.name.toLowerCase().includes(q)).forEach(p=>{
-  const d=document.createElement("div");
-  d.className="card "+p.role.toLowerCase();
-  d.innerHTML=`
-   <div class="avatar"><img src="${p.img}"></div>
-   <div class="name">${p.name}</div>
-   <div class="role">${p.role}</div>`;
-   <div class="social">
-          <a href="${p.fb}" target="_blank">Facebook</a>
-        </div>
-      </div>`;
-  if(p.role==="Leader")leader.appendChild(d);
-  else if(p.role==="Bangbathbxy")bangbathbxy.appendChild(d);
-  else if(p.role==="Bangbathbxby")bangbathbxby.appendChild(d);
-  else member.appendChild(d);
+ const q = search.value.toLowerCase();
+ leader.innerHTML = bangbathbxy.innerHTML = bangbathbxby.innerHTML = member.innerHTML = "";
+
+ people
+ .filter(p => p.name.toLowerCase().includes(q))
+ .forEach(p => {
+   const d = document.createElement("div");
+   d.className = "card " + p.role.toLowerCase();
+
+   d.innerHTML = `
+     <div class="avatar">
+       <a href="${p.fb}" target="_blank">
+         <img src="${p.img}">
+       </a>
+     </div>
+
+     <div class="name">
+       <a href="${p.fb}" target="_blank" style="color:#fff;text-decoration:none">
+         ${p.name}
+       </a>
+     </div>
+
+     <div class="role">${p.role}</div>
+
+     <div class="social">
+       <a href="${p.fb}" target="_blank">Facebook</a>
+     </div>
+   `;
+
+   if(p.role === "Leader") leader.appendChild(d);
+   else if(p.role === "Bangbathbxy") bangbathbxy.appendChild(d);
+   else if(p.role === "Bangbathbxby") bangbathbxby.appendChild(d);
+   else member.appendChild(d);
  });
 }
+
 render();
 </script>
 
