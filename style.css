@@ -55,9 +55,10 @@ html, body {
   transition: 0.3s;
 }
 
-.enter-btn:hover {
-  background: #fff;
-  color: #858585;
+button:hover .stars{
+   display: block;
+   filter: drop-shadow(0 0 10px
+   Color: #fffdef);
 }
 
 /* =========================================================
