@@ -266,7 +266,7 @@ const people=[
     
 ];
 
-const thebossbangbath = document.getElementById("thebossbangbath); 
+const thebossbangbath = document.getElementById("ThebossBangbath");
 const leader = document.getElementById("leader");
 const bangbathbxy = document.getElementById("bangbathbxy");
 const bangbathbxby = document.getElementById("bangbathbxby");
@@ -275,7 +275,8 @@ const search = document.getElementById("search");
 
 function render(){
   const q = search.value.toLowerCase();
-  thebossbangbath.innerHTML = ""; 
+
+  thebossbangbath.innerHTML = "";
   leader.innerHTML = "";
   bangbathbxy.innerHTML = "";
   bangbathbxby.innerHTML = "";
@@ -291,10 +292,9 @@ function render(){
         <div class="avatar">
           <img src="${p.img}">
         </div>
-
         <div class="name">${p.name}</div>
         <div class="role">${p.role}</div>
-
+        ${p.fb ? `
         <div class="social">
           <a href="${p.fb}" target="_blank"
              style="text-decoration:none;color:#1A70D9;"
@@ -302,16 +302,17 @@ function render(){
              onmouseout="this.style.color='#1A70D9'">
             Facebook
           </a>
-        </div>
+        </div>` : ""}
       `;
 
-      if (p.role === "thebossBangbath") Thebossbangbath.appendChild(d);
+      if (p.role === "ThebossBangbath") thebossbangbath.appendChild(d);
       else if (p.role === "Leader") leader.appendChild(d);
       else if (p.role === "Bangbathbxy") bangbathbxy.appendChild(d);
       else if (p.role === "Bangbathbxby") bangbathbxby.appendChild(d);
       else member.appendChild(d);
     });
 }
+
 render();
 </script>
 
