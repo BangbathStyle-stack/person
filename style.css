@@ -155,6 +155,74 @@ html, body {
   z-index:2;
 }
 
+/* ---------- ThebossBangbath EFFECT (เหนือ Leader) ---------- */
+.card.ThebossBangbath{
+  position:relative;
+  animation:ThebossBangbathPulse 3s infinite;
+  box-shadow:
+    0 0 40px rgba(255,0,0,.9),
+    0 0 90px rgba(255,215,0,.6);
+}
+
+/* พลังออร่าระเบิด */
+@keyframes ThebossBangbathPulse{
+  0%{box-shadow:0 0 30px #ff0000,0 0 60px #ffcc00}
+  50%{box-shadow:0 0 80px #ff1a1a,0 0 140px #ffd700}
+  100%{box-shadow:0 0 30px #ff0000,0 0 60px #ffcc00}
+}
+
+/* Avatar ระดับบอส */
+.card.ThebossBangbath .avatar{
+  background:
+    radial-gradient(circle at top,#ffd700,transparent 65%),
+    linear-gradient(135deg,#2b0000,#000);
+  box-shadow:
+    0 0 35px #ffd700,
+    inset 0 0 25px rgba(255,0,0,.6);
+}
+
+/* วงพลังหมุน */
+.card.ThebossBangbath .avatar::before{
+  content:"";
+  position:absolute;
+  inset:-12px;
+  border-radius:50%;
+  border:3px solid rgba(255,215,0,.9);
+  animation:ThebossBangbathSpin 5s linear infinite;
+}
+@keyframes ThebossBangbathSpin{
+  to{transform:rotate(360deg)}
+}
+
+/* มงกุฎ + ไฟ */
+.card.ThebossBangbath .avatar::after{
+  content:"👑🔥";
+  position:absolute;
+  top:-38px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:30px;
+  animation:ThebossBangbathFloat 2s ease-in-out infinite;
+}
+@keyframes ThebossBangbathFloat{
+  0%,100%{transform:translate(-50%,0)}
+  50%{transform:translate(-50%,-14px)}
+}
+
+/* ป้ายยศ */
+.card.ThebossBangbath::after{
+  content:"THE BOSS";
+  position:absolute;
+  top:10px;
+  right:10px;
+  font-size:11px;
+  padding:4px 9px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#ff0000,#ffd700);
+  color:#000;
+  font-weight:700;
+}
+
 /* =========================================================
    LEADER GOD MODE
 ========================================================= */
