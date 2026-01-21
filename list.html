@@ -258,38 +258,52 @@ let people=[
   {name:'Nongྀིy݂uno ', role:'Bangbathbxby', img:'https://cdn.discordapp.com/attachments/1454149098763718870/1462863899958444174/Z.png?ex=696fbdac&is=696e6c2c&hm=122ce6ebd2107d8b2c6696af0c1bb5285c6b0205838b5bc225e19dae108f5a5b&', fb:'https://www.facebook.com/nongdo.nongfew'},
   {name:'Pued Bangbathbxy', role:'Leader', img:'https://cdn.discordapp.com/attachments/1454149098763718870/1462891979183755527/59af9cd100daf9aa154cc753dd58316d.png?ex=696fd7d3&is=696e8653&hm=e7aa54fb4060b3c38ba9f8534f60fcddcb0e871839489032498a87b53e37c0b3&', fb:'https://www.facebook.com/profile.php?id=100077674954991'}
 ];
+  
+<script>
+const leader = document.getElementById("leader");
+const bangbathbxy = document.getElementById("bangbathbxy");
+const bangbathbxby = document.getElementById("bangbathbxby");
+const member = document.getElementById("member");
+const search = document.getElementById("search");
 
 function render(){
- const q=search.value.toLowerCase();
- leader.innerHTML=bangbathbxy.innerHTML=bangbathbxby.innerHTML=member.innerHTML="";
- people.filter(p=>p.name.toLowerCase().includes(q)).forEach(p=>{
-  const d=document.createElement("div");
-  d.className="card "+p.role.toLowerCase();
-  d.innerHTML = `
-  <a href="${p.fb}" target="_blank" style="text-decoration:none;">
-    <div class="avatar">
-      <img src="${p.img}">
-    </div>
-  </a>
+  const q = search.value.toLowerCase();
+  leader.innerHTML = "";
+  bangbathbxy.innerHTML = "";
+  bangbathbxby.innerHTML = "";
+  member.innerHTML = "";
 
-  <a href="${p.fb}" target="_blank"
-     style="text-decoration:none;color:#ffffff;"
-     onmouseover="this.style.color='#1A70D9'"
-     onmouseout="this.style.color='#ffffff'">
-    <div class="name">${p.name}</div>
-  </a>
+  people
+    .filter(p => p.name.toLowerCase().includes(q))
+    .forEach(p => {
+      const d = document.createElement("div");
+      d.className = "card " + (p.role === "Leader" ? "leader" : "");
 
-  <div class="role">${p.role}</div>
+      d.innerHTML = `
+        <div class="avatar">
+          <img src="${p.img}">
+        </div>
 
-  <div class="social">
-    <a href="${p.fb}" target="_blank"
-       style="text-decoration:none;color:#1A70D9;"
-       onmouseover="this.style.color='#00e5ff'"
-       onmouseout="this.style.color='#1A70D9'">
-       Facebook
-    </a>
-  </div>
-`;
+        <div class="name">${p.name}</div>
+        <div class="role">${p.role}</div>
+
+        <div class="social">
+          <a href="${p.fb}" target="_blank"
+             style="text-decoration:none;color:#1A70D9;"
+             onmouseover="this.style.color='#00e5ff'"
+             onmouseout="this.style.color='#1A70D9'">
+            Facebook
+          </a>
+        </div>
+      `;
+
+      if (p.role === "Leader") leader.appendChild(d);
+      else if (p.role === "Bangbathbxy") bangbathbxy.appendChild(d);
+      else if (p.role === "Bangbathbxby") bangbathbxby.appendChild(d);
+      else member.appendChild(d);
+    });
+}
+
 render();
 </script>
 
