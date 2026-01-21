@@ -149,14 +149,12 @@ body{
     0 0 90px rgba(255,215,0,.6);
 }
 
-/* พลังออร่าระเบิด */
 @keyframes ThebossBangbathPulse{
   0%{box-shadow:0 0 30px #ff0000,0 0 60px #ffcc00}
   50%{box-shadow:0 0 80px #ff1a1a,0 0 140px #ffd700}
   100%{box-shadow:0 0 30px #ff0000,0 0 60px #ffcc00}
 }
 
-/* Avatar ระดับบอส */
 .card.ThebossBangbath .avatar{
   background:
     radial-gradient(circle at top,#ffd700,transparent 65%),
@@ -166,7 +164,6 @@ body{
     inset 0 0 25px rgba(255,0,0,.6);
 }
 
-/* วงพลังหมุน */
 .card.ThebossBangbath .avatar::before{
   content:"";
   position:absolute;
@@ -179,9 +176,8 @@ body{
   to{transform:rotate(360deg)}
 }
 
-/* มงกุฎ + ไฟ */
 .card.ThebossBangbath .avatar::after{
-  content:"👑🔥";
+  content:"👑";
   position:absolute;
   top:-38px;
   left:50%;
@@ -194,7 +190,6 @@ body{
   50%{transform:translate(-50%,-14px)}
 }
 
-/* ป้ายยศ */
 .card.ThebossBangbath::after{
   content:"THE BOSS";
   position:absolute;
