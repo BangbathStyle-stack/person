@@ -351,7 +351,7 @@ function render(){
 
       d.innerHTML = `
         <div class="avatar">
-          <img src="${p.img}">
+          <img src="${p.img ? p.img : `https://graph.facebook.com/${getFBUser(p.fb)}/picture?type=large`}">
         </div>
 
         <div class="name">${p.name}</div>
