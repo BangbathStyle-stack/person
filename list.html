@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TEST Members</title>
+<title>BangbathStyle</title>
 
 <style>
 :root{
@@ -86,7 +87,6 @@ h1{
   border-radius:50%;
   overflow:hidden;
   border:1px solid var(--border);
-  background:#050914;
 }
 .avatar img{
   width:100%;
@@ -130,7 +130,6 @@ h1{
   display:flex;
   justify-content:center;
   gap:8px;
-  flex-wrap:wrap;
 }
 .pagination button{
   padding:8px 14px;
@@ -138,7 +137,6 @@ h1{
   border:1px solid var(--border);
   background:#0e1627;
   color:#c7d2fe;
-  cursor:pointer;
 }
 .pagination button.active{
   background:var(--accent);
@@ -146,7 +144,6 @@ h1{
 }
 .pagination button:disabled{
   opacity:.4;
-  cursor:not-allowed;
 }
 
 .footer{
@@ -160,7 +157,7 @@ h1{
 
 <body>
 <div class="container">
-  <h1>TEST</h1>
+  <h1>BangbathStyle</h1>
   <div class="subtitle">BBB Members</div>
 
   <div class="search-box">
@@ -175,39 +172,87 @@ h1{
 </div>
 
 <script>
-/* ======================
-   ข้อมูลสมาชิก
-   ยศ = Leader อย่างเดียว
-====================== */
 const members = [
   {
-    name:"Pond Bangbath",
+    name:"Pond Bangbathbay",
     fb:"https://facebook.com/pond.vorpard",
-    avatar:"https://i.pinimg.com/736x/1a/4f/78/1a4f7812ad50ceeb63c9a227b3f51129.jpg"
+    avatar:"https://i.pinimg.com/736x/1a/4f/78/1a4f7812ad50ceeb63c9a227b3f51129.jpg",
+    leader:true
   },
   {
-    name:"Pond",
+    name:"Zent DekBangbathbxy",
     fb:"https://facebook.com/",
-    avatar:"https://i.pinimg.com/736x/1a/4f/78/1a4f7812ad50ceeb63c9a227b3f51129.jpg"
+    avatar:"",
+    leader:true
   },
   {
-    name:"Testuser",
+    name:"Nongkimskibidi Bangbathbxy",
     fb:"https://facebook.com/",
-    avatar:"https://i.pinimg.com/736x/1a/4f/78/1a4f7812ad50ceeb63c9a227b3f51129.jpg"
+    avatar:"",
+    leader:true
   },
   {
-    name:"Testuser",
-    fb:"#",
-    avatar:"https://i.pinimg.com/736x/1a/4f/78/1a4f7812ad50ceeb63c9a227b3f51129.jpg"
+    name:"Jagur Bangbathbxy",
+    fb:"https://facebook.com/",
+    avatar:"",
+    leader:false
   },
   {
-    name:"Testuser",
-    fb:"#",
-    avatar:"https://i.pinimg.com/736x/1a/4f/78/1a4f7812ad50ceeb63c9a227b3f51129.jpg"
+    name:"Bell Bangbathbxy",
+    fb:"https://facebook.com/",
+    avatar:"",
+    leader:false
+  },
+  {
+    name:"Taro Bangbathbxy",
+    fb:"https://facebook.com/",
+    avatar:"",
+    leader:false
+  },
+  {
+    name:"Gunn Bangbathbxy",
+    fb:"https://facebook.com/",
+    avatar:"",
+    leader:false
+  },
+  {
+    name:"Sadly Bangbathbxy",
+    fb:"https://facebook.com/",
+    avatar:"",
+    leader:false
+  },
+  {
+    name:"Jele Bangbathbxy",
+    fb:"https://facebook.com/",
+    avatar:"",
+    leader:false
+  },
+  {
+    name:"Wei Bangbathbxy",
+    fb:"https://facebook.com/",
+    avatar:"",
+    leader:false
+  },
+  {
+    name:"Sleep Bangbathbxy",
+    fb:"https://facebook.com/",
+    avatar:"",
+    leader:false
+  },
+  {
+    name:"Zeno Bangbathbxy",
+    fb:"https://facebook.com/",
+    avatar:"",
+    leader:false
+  },
+  {
+    name:"Reflex Bangbathbxy",
+    fb:"https://facebook.com/",
+    avatar:"",
+    leader:false
   }
 ];
-
-const perPage = 6;
+const perPage = 10;
 let currentPage = 1;
 let filtered = [...members];
 
@@ -220,23 +265,27 @@ function render(){
   const start = (currentPage-1)*perPage;
   const pageData = filtered.slice(start,start+perPage);
 
-  pageData.forEach(m=>{
-    list.innerHTML+=`
-    <div class="card">
-      <div class="avatar">
-        <img src="${m.avatar}" onerror="this.src='https://i.pravatar.cc/150?u=err'">
-      </div>
-      <div class="info">
-        <div class="name">${m.name}</div>
-        <div class="rank">Leader</div>
-      </div>
-      <a class="fb-icon" href="${m.fb}" target="_blank">
-        <svg viewBox="0 0 24 24">
-          <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2V9.5c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V11h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12z"/>
-        </svg>
-      </a>
-    </div>`;
-  });
+pageData.forEach(m=>{
+  list.innerHTML+=`
+  <div class="card">
+    ${m.avatar ? `
+    <div class="avatar">
+      <img src="${m.avatar}">
+    </div>` : ``}
+
+    <div class="info">
+      <div class="name">${m.name}</div>
+      ${m.leader ? `<div class="rank">Leader</div>` : ``}
+    </div>
+
+    <a class="fb-icon" href="${m.fb}" target="_blank">
+      <svg viewBox="0 0 24 24">
+        <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2V9.5c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V11h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12z"/>
+      </svg>
+    </a>
+  </div>`;
+});
+
 
   renderPagination();
 }
