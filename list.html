@@ -324,11 +324,11 @@ function renderPagination(){
   pagination.innerHTML="";
   const total = Math.ceil(filtered.length / perPage);
 
-  pagination.innerHTML += `<button ${currentPage===1?"disabled":""} onclick="goto(${currentPage-1})">ก่อนหน้า</button>`;
+  pagination.innerHTML += `<button ${currentPage===1?"disabled":""} onclick="goto(${currentPage-1})">Back</button>`;
   for(let i=1;i<=total;i++){
     pagination.innerHTML += `<button class="${i===currentPage?"active":""}" onclick="goto(${i})">${i}</button>`;
   }
-  pagination.innerHTML += `<button ${currentPage===total?"disabled":""} onclick="goto(${currentPage+1})">ถัดไป</button>`;
+  pagination.innerHTML += `<button ${currentPage===total?"disabled":""} onclick="goto(${currentPage+1})">Next</button>`;
 }
 
 function goto(p){
