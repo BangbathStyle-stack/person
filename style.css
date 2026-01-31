@@ -1,6 +1,4 @@
-/* =========================================================
-   BASE / RESET
-========================================================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -16,9 +14,6 @@ html, body {
   color: #fff;
 }
 
-/* =========================================================
-   LANDING
-========================================================= */
 .landing {
   background: url("https://img5.pic.in.th/file/secure-sv1/2Q21a42c27ccfe8a30.png")
     center / cover no-repeat fixed;
@@ -61,9 +56,6 @@ html, body {
    
 }
 
-/* =========================================================
-   HEADER
-========================================================= */
 .header{
   text-align:center;
   padding:80px 20px;
@@ -73,9 +65,6 @@ html, body {
     center/cover no-repeat;
 }
 
-/* =========================================================
-   GRID / SECTION
-========================================================= */
 .section{
   max-width: 900px;
   margin:40px auto;
@@ -94,9 +83,6 @@ html, body {
   margin: 20px 0 40px;
 }
 
-/* =========================================================
-   CARD
-========================================================= */
 .card{
   background:#111;
   border-radius:16px;
@@ -112,13 +98,9 @@ html, body {
   transform: translateY(-6px);
 }
 
-/* sort order */
 .card.leader{ order:1; }
 .card.member-lady{ order:3; }
 
-/* =========================================================
-   AVATAR
-========================================================= */
 .avatar{
   width:90px;
   height:90px;
@@ -155,7 +137,6 @@ html, body {
   z-index:2;
 }
 
-/* ---------- ThebossBangbath EFFECT (เหนือ Leader) ---------- */
 .card.ThebossBangbath{
   position:relative;
   animation:ThebossBangbathPulse 3s infinite;
@@ -171,7 +152,6 @@ html, body {
   100%{box-shadow:0 0 30px #ff0000,0 0 60px #ffcc00}
 }
 
-/* Avatar ระดับบอส */
 .card.ThebossBangbath .avatar{
   background:
     radial-gradient(circle at top,#ffd700,transparent 65%),
@@ -181,7 +161,6 @@ html, body {
     inset 0 0 25px rgba(255,0,0,.6);
 }
 
-/* วงพลังหมุน */
 .card.ThebossBangbath .avatar::before{
   content:"";
   position:absolute;
@@ -194,7 +173,6 @@ html, body {
   to{transform:rotate(360deg)}
 }
 
-/* มงกุฎ + ไฟ */
 .card.ThebossBangbath .avatar::after{
   content:"👑🔥";
   position:absolute;
@@ -209,7 +187,6 @@ html, body {
   50%{transform:translate(-50%,-14px)}
 }
 
-/* ป้ายยศ */
 .card.ThebossBangbath::after{
   content:"THE BOSS";
   position:absolute;
@@ -223,9 +200,6 @@ html, body {
   font-weight:700;
 }
 
-/* =========================================================
-   LEADER GOD MODE
-========================================================= */
 .card.leader{
   box-shadow:
     0 0 0 1px rgba(255,60,60,.4),
@@ -238,7 +212,6 @@ html, body {
     0 0 45px rgba(255,0,0,.6);
 }
 
-/* Aura รอบการ์ด */
 .card.leader::before{
   content:"";
   position:absolute;
@@ -257,7 +230,6 @@ html, body {
   to{ transform:rotate(360deg); }
 }
 
-/* Avatar Aura */
 .card.leader .avatar::after{
   background:conic-gradient(#ffd700,#ff3b3b,#ffd700);
   animation: avatarSpin 4s linear infinite;
@@ -267,7 +239,6 @@ html, body {
   to{ transform:rotate(360deg); }
 }
 
-/* มงกุฎลอย */
 .card.leader .avatar::before{
   content:"👑";
   position:absolute;
@@ -291,9 +262,6 @@ html, body {
     0 0 18px rgba(255,59,59,.7);
 }
 
-/* =========================================================
-   MUSIC BUTTON
-========================================================= */
 .music-btn{
   position:fixed;
   bottom:24px;
@@ -322,18 +290,12 @@ html, body {
   100%{ box-shadow:0 0 15px rgba(255,215,0,.6); }
 }
 
-/* =========================================================
-   FOOTER
-========================================================= */
 footer{
   text-align:center;
   padding:30px;
   opacity:.6;
 }
 
-/* =========================================================
-   MUSIC PLAYER + VOLUME (ADD-ON)
-========================================================= */
 
 .music-panel{
   position:fixed;
@@ -352,14 +314,12 @@ footer{
   z-index:9998;
 }
 
-/* ICON */
 .music-panel span{
   font-size:14px;
   opacity:.85;
   text-shadow:0 0 6px rgba(255,215,0,.8);
 }
 
-/* SLIDER */
 .music-panel input[type="range"]{
   width:110px;
   height:4px;
@@ -373,7 +333,6 @@ footer{
   cursor:pointer;
 }
 
-/* SLIDER THUMB */
 .music-panel input[type="range"]::-webkit-slider-thumb{
   appearance:none;
   width:16px;
@@ -393,7 +352,6 @@ footer{
   border:none;
 }
 
-/* HIDE PANEL WHEN NOT PLAYING (OPTIONAL EFFECT) */
 .music-panel.hidden{
   opacity:0;
   pointer-events:none;
