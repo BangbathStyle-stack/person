@@ -6,7 +6,6 @@
 <title>Bangbath</title>
 
 <style>
-@import url('list.html');
 
 *{
   margin:0;
@@ -28,7 +27,6 @@ body{
   color:white;
 }
 
-/* กล่องกลาง */
 .wrapper{
   text-align:center;
   backdrop-filter:blur(14px);
@@ -39,7 +37,6 @@ body{
   box-shadow:0 0 80px rgba(122,162,255,.08);
 }
 
-/* Title */
 .title{
   font-size:72px;
   letter-spacing:8px;
@@ -62,7 +59,6 @@ body{
   letter-spacing:2px;
 }
 
-/* ปุ่ม */
 .buttons{
   display:flex;
   gap:28px;
@@ -84,7 +80,6 @@ body{
   transition:.35s;
 }
 
-/* เอฟเฟกต์แสง */
 .btn::before{
   content:"";
   position:absolute;
@@ -104,25 +99,6 @@ body{
   border-color:#7aa2ff;
 }
 
-/* Responsive */
-@media(max-width:700px){
-  .wrapper{
-    padding:50px 30px;
-  }
-
-  .title{
-    font-size:48px;
-  }
-
-  .btn{
-    width:100%;
-  }
-
-  .buttons{
-    flex-direction:column;
-  }
-}
-
 .footer{
   margin-top:50px;
   font-size:12px;
@@ -139,8 +115,8 @@ body{
   <div class="subtitle">Select Group</div>
 
   <div class="buttons">
-    <a class="btn" href="person.html?group=bangbath">Bangbathbxy</a>
-    <a class="btn" href="person.html?group=fakemafuck">Fakemafuck</a>
+    <a class="btn" href="list.html?group=bangbath">Bangbathbxy</a>
+    <a class="btn" href="list.html?group=fakemafuck">Fakemafuck</a>
   </div>
 
   <div class="footer">BangbathNevergiveup © 2026</div>
