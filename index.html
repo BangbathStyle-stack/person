@@ -1,24 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>BangbathStyle </title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bangbath</title>
 
-<!-- CSS -->
-<link rel="stylesheet" href="style.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  height:100vh;
+  background:
+  radial-gradient(circle at top,#0f172a,#020617 70%),
+  url("https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070&auto=format&fit=crop");
+  background-size:cover;
+  background-blend-mode:overlay;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+}
+
+/* กล่องกลาง */
+.wrapper{
+  text-align:center;
+  backdrop-filter:blur(14px);
+  background:rgba(2,6,23,.55);
+  padding:70px 90px;
+  border-radius:28px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 0 80px rgba(122,162,255,.08);
+}
+
+/* Title */
+.title{
+  font-size:72px;
+  letter-spacing:8px;
+  font-weight:700;
+  margin-bottom:20px;
+  background:linear-gradient(90deg,#fff,#7aa2ff,#fff);
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:glow 4s infinite ease-in-out;
+}
+
+@keyframes glow{
+  0%,100%{text-shadow:0 0 10px rgba(122,162,255,.2);}
+  50%{text-shadow:0 0 35px rgba(122,162,255,.6);}
+}
+
+.subtitle{
+  color:#9ca3af;
+  margin-bottom:45px;
+  letter-spacing:2px;
+}
+
+/* ปุ่ม */
+.buttons{
+  display:flex;
+  gap:28px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.btn{
+  position:relative;
+  padding:18px 60px;
+  border-radius:50px;
+  font-size:18px;
+  letter-spacing:1px;
+  color:white;
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(2,6,23,.6);
+  overflow:hidden;
+  transition:.35s;
+}
+
+/* เอฟเฟกต์แสง */
+.btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,#7aa2ff,transparent);
+  opacity:0;
+  transition:.4s;
+}
+
+.btn:hover::before{
+  opacity:.6;
+}
+
+.btn:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 25px rgba(122,162,255,.4);
+  border-color:#7aa2ff;
+}
+
+/* Responsive */
+@media(max-width:700px){
+  .wrapper{
+    padding:50px 30px;
+  }
+
+  .title{
+    font-size:48px;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+  .buttons{
+    flex-direction:column;
+  }
+}
+
+.footer{
+  margin-top:50px;
+  font-size:12px;
+  color:#6b7280;
+}
+</style>
 </head>
-<body class="landing">
 
-<div class="overlay">
-  <h1 class="gang-title">DekBangbath2k26!</h1>
-  <p class="gang-sub">1 IN BangBathBxy</p>
+<body>
 
-  <a href="list.html" class="enter-btn">
-    𝐏𝐞𝐫𝐬𝐨𝐧 𝐋𝐢𝐬𝐭 
-  </a>
-</div>
-  
+<div class="wrapper">
+
+  <div class="title">BANGBATH</div>
+  <div class="subtitle">Select Group</div>
+
+  <div class="buttons">
+    <a class="btn" href="person.html?group=bangbath">Bangbathbxy</a>
+    <a class="btn" href="person.html?group=fakemafuck">Fakemafuck</a>
+  </div>
+
+  <div class="footer">BangbathNevergiveup © 2026</div>
+
 </div>
 
 </body>
