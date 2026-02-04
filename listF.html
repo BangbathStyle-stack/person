@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Group List</title>
+
+<style>
+body{
+  background:#020617;
+  color:white;
+  font-family:Poppins;
+  text-align:center;
+  padding-top:80px;
+}
+
+.card{
+  background:#0f172a;
+  padding:20px;
+  margin:15px auto;
+  width:250px;
+  border-radius:15px;
+}
+</style>
+
+</head>
+<body>
+
+<h1 id="groupTitle"></h1>
+<div id="list"></div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const group = params.get("group");
+
+const data = {
+
+  bangbath:[
+    "Player 1",
+    "Player 2",
+    "Player 3"
+  ],
+
+  fakemafuck:[
+    "Member A",
+    "Member B"
+  ]
+
+};
+
+document.getElementById("groupTitle").innerText = group;
+
+const listDiv = document.getElementById("list");
+
+data[group].forEach(name=>{
+  listDiv.innerHTML += `<div class="card">${name}</div>`;
+});
+</script>
+
+</body>
+</html>
 
