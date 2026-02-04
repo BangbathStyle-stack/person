@@ -1,1 +1,324 @@
 
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BangBathStyleFakemafuck</title>
+
+<style>
+:root{
+  --bg:#0b1220;
+  --card:#121a2b;
+  --border:#1f2a44;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --accent:#7aa2ff;
+}
+
+*{box-sizing:border-box;font-family:Inter,system-ui}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:radial-gradient(circle at top,#111a33,#070b16 65%);
+  color:var(--text);
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:40px 20px 60px;
+}
+
+h1{
+  text-align:center;
+  margin:0;
+  font-size:42px;
+  color:var(--accent);
+}
+.subtitle{
+  text-align:center;
+  color:var(--muted);
+  margin-top:6px;
+}
+
+.search-box{
+  margin:35px auto 45px;
+  max-width:620px;
+  display:flex;
+  gap:12px;
+}
+.search-box input{
+  flex:1;
+  padding:14px 20px;
+  border-radius:30px;
+  border:1px solid var(--border);
+  background:#0e1627;
+  color:white;
+}
+.search-box button{
+  width:46px;
+  border-radius:50%;
+  border:1px solid var(--border);
+  background:#0e1627;
+  color:#9ca3af;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:22px;
+}
+
+.card{
+  background:linear-gradient(180deg,#131c33,#0f1627);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:18px 20px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.avatar{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  overflow:hidden;
+  border:1px solid var(--border);
+}
+.avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.info{flex:1}
+.name{
+  font-weight:600;
+  font-size:16px;
+}
+.rank{
+  margin-top:4px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+.fb-icon{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:rgba(255,255,255,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.2s;
+}
+.fb-icon svg{
+  width:18px;
+  height:18px;
+  fill:var(--accent);
+}
+.fb-icon:hover{
+  background:rgba(122,162,255,.18);
+  transform:scale(1.06);
+}
+
+.pagination{
+  margin-top:40px;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+}
+.pagination button{
+  padding:8px 14px;
+  border-radius:20px;
+  border:1px solid var(--border);
+  background:#0e1627;
+  color:#c7d2fe;
+}
+.pagination button.active{
+  background:var(--accent);
+  color:#020617;
+}
+.pagination button:disabled{
+  opacity:.4;
+}
+
+.footer{
+  margin-top:60px;
+  text-align:center;
+  font-size:13px;
+  color:#6b7280;
+}
+/* 🎵 Music UI */
+#musicControl{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#0e1627;
+  border:1px solid #1f2a44;
+  border-radius:999px;
+  padding:10px 14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  z-index:999;
+}
+#musicControl button{
+  background:none;
+  border:none;
+  color:#7aa2ff;
+  font-size:18px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgm" loop>
+  <source src="https://grand-amaranth-0usxz8eguw.edgeone.app/ห้องนอน%20Fridaynight%20to%20Sunday%20Official%20MV.mp3">
+</audio>
+
+<div id="musicControl">
+  <button id="playBtn">▶️</button>
+  <input id="volume" type="range" min="0" max="1" step="0.01" value="0.5">
+</div>
+
+<div class="container">
+  <h1>FakemafuckDiwa</h1>
+  <div class="subtitle">Soon...</div>
+
+  <div class="search-box">
+    <input type="text" id="search" placeholder="search...">
+    <button>⚙</button>
+  </div>
+
+  <div class="grid" id="list"></div>
+  <div class="pagination" id="pagination"></div>
+
+  <div class="footer">Soon... | Soon...</div>
+</div>
+
+<script>
+const members = [
+  {
+    name:"Soon...",
+    fb:"",
+    avatar:"https://cdn.discordapp.com/attachments/1436073830413107200/1467122939236323328/1ad5275bc5174cec.png?ex=69848236&is=698330b6&hm=63bdec8a512e528c87b3de0ceef334915d6ce8fadbc1366d56745b970cc09d9f&",
+    leader:false
+  }
+
+];
+
+const perPage = 9  ;
+let currentPage = 1;
+let filtered = [...members];
+
+const list = document.getElementById("list");
+const pagination = document.getElementById("pagination");
+const search = document.getElementById("search");
+
+function cardHTML(m){
+  return `
+  <div class="card">
+    <div class="avatar"><img src="${m.avatar}"></div>
+    <div class="info">
+      <div class="name">${m.leader ? "👑 " : ""}${m.name}</div>
+      ${m.leader ? `<div class="rank">Leader</div>` : ``}
+    </div>
+    <a class="fb-icon" href="${m.fb}" target="_blank">
+      <svg viewBox="0 0 24 24">
+        <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2V9.5c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V11h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12z"/>
+      </svg>
+    </a>
+  </div>`;
+}
+
+function render(){
+  list.innerHTML = "";
+
+  const leaders = filtered.filter(m => m.leader);
+  const membersOnly = filtered.filter(m => !m.leader);
+
+  /* ===== Leader (เฉพาะหน้า 1) ===== */
+  if(currentPage === 1 && leaders.length){
+    list.innerHTML += `
+      <div style="grid-column:1/-1;font-size:20px;font-weight:600;margin-bottom:10px">
+        👑 Leader
+      </div>`;
+    leaders.forEach(m => list.innerHTML += cardHTML(m));
+  }
+
+  /* ===== Members Pagination ===== */
+  const start = (currentPage - 1) * perPage;
+  const pageMembers = membersOnly.slice(start, start + perPage);
+
+  if(pageMembers.length){
+    list.innerHTML += `
+      <div style="grid-column:1/-1;margin:30px 0 10px;font-size:20px;font-weight:600">
+        👤 Members
+      </div>`;
+    pageMembers.forEach(m => list.innerHTML += cardHTML(m));
+  }
+
+  renderPagination(membersOnly.length);
+}
+
+function renderPagination(memberCount){
+  pagination.innerHTML = "";
+  const total = Math.max(1, Math.ceil(memberCount / perPage));
+
+  pagination.innerHTML += `
+    <button ${currentPage===1?"disabled":""} onclick="goto(${currentPage-1})">Back</button>
+  `;
+
+  for(let i=1;i<=total;i++){
+    pagination.innerHTML += `
+      <button class="${i===currentPage?"active":""}" onclick="goto(${i})">${i}</button>
+    `;
+  }
+
+  pagination.innerHTML += `
+    <button ${currentPage===total?"disabled":""} onclick="goto(${currentPage+1})">Next</button>
+  `;
+}
+
+function goto(p){
+  if(p < 1) return;
+  currentPage = p;
+  render();
+}
+
+search.addEventListener("input",()=>{
+  const v = search.value.toLowerCase();
+  filtered = members.filter(m => m.name.toLowerCase().includes(v));
+  currentPage = 1;
+  render();
+});
+
+render();
+/* 🎵 MUSIC LOGIC */
+const bgm=document.getElementById("bgm");
+const playBtn=document.getElementById("playBtn");
+const volume=document.getElementById("volume");
+
+bgm.volume=volume.value;
+
+playBtn.onclick=()=>{
+  if(bgm.paused){bgm.play();playBtn.textContent="⏸";}
+  else{bgm.pause();playBtn.textContent="▶️";}
+};
+volume.oninput=()=>bgm.volume=volume.value;
+
+/* 🔥 Auto start  */
+document.addEventListener("click",()=>{
+  if(bgm.paused){
+    bgm.play().then(()=>playBtn.textContent="⏸");
+  }
+},{once:true});
+</script>
+</body>
+</html>
