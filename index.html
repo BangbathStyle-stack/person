@@ -3,122 +3,165 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
+<title>Fakemafuck&Bangbath</title>
 
 <style>
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Poppins, sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter, system-ui;
 }
 
 body{
-  height:100vh;
-  background:black;
-  color:#ffd54a;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:radial-gradient(circle at top,#0d1b3a,#020617 70%);
+color:white;
+overflow:hidden;
 }
 
-/* GRID พื้น */
-body::before{
-  content:"";
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:60%;
-  background:
-    linear-gradient(#ffd54a22 1px, transparent 1px),
-    linear-gradient(90deg,#ffd54a22 1px, transparent 1px);
-  background-size:50px 50px;
-  transform:perspective(500px) rotateX(60deg);
-  opacity:.4;
+/* ===== FADE + ZOOM ===== */
+body.loaded .container{
+opacity:1;
+transform:scale(1);
 }
 
-/* กล่องหลัก */
 .container{
-  text-align:center;
-  z-index:2;
+width:90%;
+max-width:1300px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:40px;
+
+opacity:0;
+transform:scale(1.08);
+transition:1.2s ease;
 }
 
-/* โลโก้ */
-.logo{
-  width:140px;
-  height:140px;
-  margin:auto;
-  border:2px solid #ffd54a;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 0 25px #ffd54a88;
-  margin-bottom:40px;
+/* TEXT */
+.text-box h1{
+font-size:64px;
+font-weight:800;
+line-height:1.1;
 }
 
-.logo img{
-  width:90%;
+.text-box span{
+background:linear-gradient(90deg,#9fb8ff,#7aa2ff,#c6d4ff);
+-webkit-background-clip:text;
+color:transparent;
 }
 
-/* Title */
-.title{
-  font-size:90px;
-  font-weight:800;
-  letter-spacing:5px;
-  color:#ffd54a;
-  text-shadow:0 0 30px #ffd54a99;
-}
-
-/* subtitle */
-.subtitle{
-  margin-top:10px;
-  letter-spacing:4px;
-  font-size:13px;
-  opacity:.7;
-}
-
-/* ปุ่ม */
+/* BUTTON */
 .enter-btn{
-  margin-top:50px;
-  padding:18px 60px;
-  border:2px solid #ffd54a;
-  background:transparent;
-  color:#ffd54a;
-  font-size:16px;
-  letter-spacing:2px;
-  cursor:pointer;
-  transition:.3s;
-  text-decoration:none;
-  display:inline-block;
+margin-top:30px;
+display:inline-flex;
+padding:14px 28px;
+border-radius:12px;
+background:#6b7280;
+text-decoration:none;
+color:white;
+font-weight:600;
+transition:.3s;
 }
 
 .enter-btn:hover{
-  background:#ffd54a;
-  color:black;
-  box-shadow:0 0 25px #ffd54a;
+background:#9fb8ff;
+transform:translateY(-3px);
 }
 
-/* เพลง */
-.music-box{
-  position:fixed;
-  right:25px;
-  bottom:25px;
-  background:#111;
-  padding:15px;
-  border-radius:20px;
-  width:250px;
-  box-shadow:0 0 20px #000;
+.logo-frame{
+position:relative;
+width:320px;
+height:320px;
+border-radius:30px;
+display:flex;
+align-items:center;
+justify-content:center;
+animation:float 3s ease-in-out infinite;
 }
 
-.music-box button{
-  width:45px;
-  height:45px;
-  border:none;
-  border-radius:50%;
-  cursor:pointer;
-  font-size:18px;
+.logo-frame::before{
+content:"";
+position:absolute;
+inset:-2px;
+border-radius:32px;
+background:linear-gradient(45deg,#7aa2ff,transparent,#7aa2ff);
+filter:blur(8px);
+opacity:.35;
+}
+
+/* glass */
+.logo-box{
+position:relative;
+width:100%;
+height:100%;
+border-radius:30px;
+background:rgba(255,255,255,0.04);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.06);
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+z-index:2;
+transition:.4s;
+}
+
+/* glow hover */
+.logo-box:hover{
+box-shadow:0 0 45px rgba(122,162,255,.45);
+transform:scale(1.02);
+}
+
+/* IMAGE */
+.logo-box img{
+width:80%;
+border-radius:14px;
+transition:.4s;
+}
+
+.logo-box:hover img{
+transform:scale(1.05);
+}
+
+/* footer */
+.footer{
+position:absolute;
+bottom:20px;
+width:100%;
+text-align:center;
+font-size:13px;
+color:#7c8596;
+}
+
+/* animations */
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-14px);}
+}
+
+/* mobile */
+@media(max-width:900px){
+
+.container{
+flex-direction:column;
+text-align:center;
+}
+
+.text-box h1{
+font-size:42px;
+}
+
+.logo-frame{
+width:250px;
+height:250px;
+}
+
 }
 
 </style>
@@ -128,15 +171,34 @@ body::before{
 
 <div class="container">
 
-  <div class="logo">
-    <img src="https://cdn.discordapp.com/attachments/1436073830413107200/1452567527086493816/image.png?ex=69859bed&is=69844a6d&hm=9c5a9fe6efa287b2b93323b5e186ff167938fff309b510ed47a6db14f5162ef3&">
-  </div>
+<div class="text-box">
+<h1>
+Welcome to <br>
+<span>Fakemafuck&Bangbath</span>
+</h1>
 
-  <div class="title"></div>
-  <div class="subtitle"></div>
+<a href="list.html" class="enter-btn">
+View Member List →
+</a>
+</div>
 
-  <a href="list1.html" class="enter-btn">> ENTER </a>
+<div class="logo-frame">
+<div class="logo-box">
+<img src="https://img5.pic.in.th/file/secure-sv1/619683650_1257032309689452_6663739232367019965_n.jpg">
+</div>
+</div>
 
+</div>
+
+<div class="footer">
+© Start 2k25
+</div>
+
+<script>
+
+window.onload = () => {
+document.body.classList.add("loaded");
+};
 </script>
 
 </body>
