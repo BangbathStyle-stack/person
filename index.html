@@ -7,171 +7,118 @@
 
 <style>
 
-@import url('');
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Orbitron', sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Poppins, sans-serif;
 }
 
 body{
-height:100vh;
-background:black;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
-color:#ffd54a;
+  height:100vh;
+  background:black;
+  color:#ffd54a;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
 }
 
-/* GRID */
+/* GRID พื้น */
 body::before{
-content:"";
-position:absolute;
-bottom:0;
-width:100%;
-height:65%;
-background:
-linear-gradient(#ffd54a22 1px, transparent 1px),
-linear-gradient(90deg,#ffd54a22 1px, transparent 1px);
-background-size:55px 55px;
-transform:perspective(500px) rotateX(60deg);
-opacity:.35;
+  content:"";
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:60%;
+  background:
+    linear-gradient(#ffd54a22 1px, transparent 1px),
+    linear-gradient(90deg,#ffd54a22 1px, transparent 1px);
+  background-size:50px 50px;
+  transform:perspective(500px) rotateX(60deg);
+  opacity:.4;
 }
 
-/* กล่องกลาง */
+/* กล่องหลัก */
 .container{
-text-align:center;
-z-index:2;
+  text-align:center;
+  z-index:2;
 }
 
-/* ⭐ กรอบโลโก้ Neon */
-.logo-frame{
-position:relative;
-width:160px;
-height:160px;
-margin:auto;
-display:flex;
-justify-content:center;
-align-items:center;
-margin-bottom:40px;
-}
-
-.logo-frame::before{
-content:"";
-position:absolute;
-inset:-4px;
-border-radius:10px;
-background:linear-gradient(45deg,#ffd54a,transparent,#ffd54a);
-filter:blur(8px);
-animation:borderMove 4s linear infinite;
-}
-
+/* โลโก้ */
 .logo{
-position:relative;
-width:100%;
-height:100%;
-border:2px solid #ffd54a;
-display:flex;
-align-items:center;
-justify-content:center;
-background:black;
-z-index:2;
+  width:140px;
+  height:140px;
+  margin:auto;
+  border:2px solid #ffd54a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 0 25px #ffd54a88;
+  margin-bottom:40px;
 }
 
 .logo img{
-width:85%;
+  width:90%;
 }
 
-@keyframes borderMove{
-0%{transform:rotate(0deg);}
-100%{transform:rotate(360deg);}
-}
-
-/* ⭐ ชื่อ */
+/* Title */
 .title{
-font-size:110px;
-font-weight:900;
-background:linear-gradient(180deg,#fff,#ffd54a,#ffb300);
--webkit-background-clip:text;
-color:transparent;
-text-shadow:
-0 0 15px #ffd54a,
-0 0 40px #ffd54a55;
-animation:glow 3s ease-in-out infinite;
+  font-size:90px;
+  font-weight:800;
+  letter-spacing:5px;
+  color:#ffd54a;
+  text-shadow:0 0 30px #ffd54a99;
 }
 
-/* แสงเต้น */
-@keyframes glow{
-0%,100%{filter:brightness(1);}
-50%{filter:brightness(1.4);}
-}
-
-/* Subtitle */
+/* subtitle */
 .subtitle{
-margin-top:8px;
-letter-spacing:5px;
-font-size:13px;
-opacity:.7;
+  margin-top:10px;
+  letter-spacing:4px;
+  font-size:13px;
+  opacity:.7;
 }
 
 /* ปุ่ม */
 .enter-btn{
-margin-top:60px;
-padding:18px 70px;
-border:2px solid #ffd54a;
-color:#ffd54a;
-text-decoration:none;
-font-size:16px;
-letter-spacing:2px;
-position:relative;
-overflow:hidden;
-transition:.4s;
-}
-
-/* เอฟเฟกต์ปุ่ม */
-.enter-btn::before{
-content:"";
-position:absolute;
-left:-100%;
-top:0;
-width:100%;
-height:100%;
-background:linear-gradient(90deg,transparent,#ffd54a,transparent);
-transition:.6s;
-}
-
-.enter-btn:hover::before{
-left:100%;
+  margin-top:50px;
+  padding:18px 60px;
+  border:2px solid #ffd54a;
+  background:transparent;
+  color:#ffd54a;
+  font-size:16px;
+  letter-spacing:2px;
+  cursor:pointer;
+  transition:.3s;
+  text-decoration:none;
+  display:inline-block;
 }
 
 .enter-btn:hover{
-background:#ffd54a;
-color:black;
-box-shadow:0 0 30px #ffd54a;
+  background:#ffd54a;
+  color:black;
+  box-shadow:0 0 25px #ffd54a;
 }
 
-/* กล่องเพลง */
+/* เพลง */
 .music-box{
-position:fixed;
-right:25px;
-bottom:25px;
-background:#111;
-padding:18px;
-border-radius:20px;
-width:230px;
-box-shadow:0 0 20px #000;
+  position:fixed;
+  right:25px;
+  bottom:25px;
+  background:#111;
+  padding:15px;
+  border-radius:20px;
+  width:250px;
+  box-shadow:0 0 20px #000;
 }
 
 .music-box button{
-width:50px;
-height:50px;
-border-radius:50%;
-border:none;
-cursor:pointer;
-font-size:18px;
+  width:45px;
+  height:45px;
+  border:none;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:18px;
 }
 
 </style>
@@ -181,38 +128,38 @@ font-size:18px;
 
 <div class="container">
 
-<div class="logo-frame">
-<div class="logo">
-<img src="">
-</div>
-</div>
+  <div class="logo">
+    <img src="https://i.imgur.com/6X8GQ8Q.png">
+  </div>
 
-<div class="title">Test</div>
-<div class="subtitle">Test</div>
+  <div class="title">Select</div>
+  <div class="subtitle">Select</div>
 
-<a href="list1.html" class="enter-btn">> ENTER SYSTEM</a>
+  <a href="lits1.html" class="enter-btn">> [ ENTER ]</a>
 
 </div>
 
+<!-- กล่องเพลง -->
 <div class="music-box">
-<audio id="music" loop>
-<source src="song.mp3">
-</audio>
-<button onclick="toggleMusic()">▶</button>
+  <audio id="music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+  <button onclick="toggleMusic()">▶</button>
 </div>
 
 <script>
-let music=document.getElementById("music");
+
+let music = document.getElementById("music");
 
 function toggleMusic(){
-if(music.paused){
-music.play();
-}else{
-music.pause();
+  if(music.paused){
+    music.play();
+  }else{
+    music.pause();
+  }
 }
-}
+
 </script>
 
 </body>
 </html>
-
