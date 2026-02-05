@@ -190,8 +190,8 @@ h1{
 </div>
 
 <div class="category-tabs">
-<button class="category-btn active" data-cat="bangbath">BangbathStyle</button>
 <button class="category-btn" data-cat="fake">Fakemafuck</button>
+<button class="category-btn active" data-cat="bangbath">BangbathStyle</button>
 </div>
 
 <div class="grid" id="list"></div>
@@ -249,7 +249,7 @@ const members = [
 
 
 const perPage = 9  ;
-let categoryMode="bangbath";
+let categoryMode="fake";
 let currentPage = 1;
 let filtered = [...members];
 
@@ -299,9 +299,15 @@ const leaders=filtered.filter(m=>m.leader);
 const normal=filtered.filter(m=>!m.leader);
 
 if(currentPage===1 && leaders.length){
-list.innerHTML+=`<div style="grid-column:1/-1;font-size:20px;font-weight:600">👑 Leader</div>`;
+
+let leaderTitle = categoryMode === "fake"
+  ? "👑 Fakemafuck"
+  : "👑 Leader";
+
+list.innerHTML+=`<div style="grid-column:1/-1;font-size:20px;font-weight:600">${leaderTitle}</div>`;
 leaders.forEach(m=>list.innerHTML+=cardHTML(m));
 }
+
 
 const start=(currentPage-1)*perPage;
 const page=normal.slice(start,start+perPage);
