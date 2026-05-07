@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TEST</title>
+  <style>
+    @import url('https://cdn.discordapp.com/attachments/1396015956228178101/1397518068501970954/received_1256429626115881-removebg-preview.png?ex=69fdb3a0&is=69fc6220&hm=8c9bfeae9e2563c7dba09fcb877ac74013d588860011b86929b85cd03029a6c5&');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: #f2f2f2;
+      font-family: Inter, sans-serif;
+      background: #090909;
+    }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      padding: 52px 26px 28px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      isolation: isolate;
+    }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: -5;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.86) 0%, rgba(20,20,20,.58) 42%, rgba(0,0,0,.86) 100%),
+        linear-gradient(180deg, rgba(0,0,0,.68), rgba(0,0,0,.9)),
+        url('https://cdn.discordapp.com/attachments/1396015956228178101/1397518068501970954/received_1256429626115881-removebg-preview.png?ex=69fdb3a0&is=69fc6220&hm=8c9bfeae9e2563c7dba09fcb877ac74013d588860011b86929b85cd03029a6c5&');
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(1) contrast(1.1) brightness(.58);
+    }
+
+    .fog {
+      position: fixed;
+      inset: -20%;
+      z-index: -4;
+      background:
+        radial-gradient(circle at 22% 55%, rgba(255,255,255,.12), transparent 26%),
+        radial-gradient(circle at 72% 42%, rgba(255,255,255,.1), transparent 28%),
+        radial-gradient(circle at 48% 80%, rgba(255,255,255,.06), transparent 28%);
+      filter: blur(30px);
+      animation: fogMove 13s ease-in-out infinite alternate;
+    }
+
+    @keyframes fogMove {
+      from { transform: translateX(-2%) translateY(1%); opacity: .72; }
+      to { transform: translateX(3%) translateY(-1%); opacity: 1; }
+    }
+
+    .close {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin-bottom: 12px;
+      background: rgba(23, 26, 31, .86);
+      border: 1px solid rgba(255,255,255,.06);
+      color: #fff;
+      font-size: 25px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.38);
+      opacity: .9;
+    }
+
+    .title {
+      font-family: Orbitron, sans-serif;
+      font-size: clamp(34px, 5.5vw, 78px);
+      line-height: 1;
+      letter-spacing: clamp(8px, 2vw, 22px);
+      text-align: center;
+      font-weight: 700;
+      text-shadow: 0 0 22px rgba(255,255,255,.2);
+    }
+
+    .subtitle {
+      margin-top: 18px;
+      font-family: Orbitron, sans-serif;
+      letter-spacing: 11px;
+      font-size: 13px;
+      color: rgba(235,241,245,.62);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .logo-card {
+      width: min(720px, 92vw);
+      height: 330px;
+      margin-top: 34px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.13);
+      background: linear-gradient(135deg, rgba(255,255,255,.07), rgba(255,255,255,.025));
+      box-shadow: 0 36px 85px rgba(0,0,0,.56), inset 0 0 50px rgba(255,255,255,.025);
+      display: grid;
+      place-items: center;
+      backdrop-filter: blur(8px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .logo-card::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(110deg, transparent, rgba(255,255,255,.18), transparent);
+      transform: translateX(-100%);
+      animation: shine 5s infinite;
+    }
+
+    @keyframes shine {
+      0%, 45% { transform: translateX(-120%); }
+      70%, 100% { transform: translateX(120%); }
+    }
+
+    .wolf-logo {
+      width: 190px;
+      height: 190px;
+      object-fit: contain;
+      filter: grayscale(1) drop-shadow(0 0 18px rgba(205,226,255,.18));
+      animation: spin360 7s linear infinite;
+      transform-style: preserve-3d;
+    }
+
+    @keyframes spin360 {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(360deg); }
+    }
+
+    .cards {
+      margin-top: 92px;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(145px, 1fr));
+      gap: 14px;
+      width: min(1120px, 95vw);
+    }
+
+    .card {
+      text-decoration: none;
+      color: #fff;
+      min-height: 116px;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,.13);
+      background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+      box-shadow: 0 22px 60px rgba(0,0,0,.32);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(7px);
+      transition: .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(255,255,255,.16), transparent 42%);
+      opacity: 0;
+      transition: .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.025);
+      border-color: rgba(255,255,255,.34);
+      box-shadow: 0 24px 75px rgba(255,255,255,.08), 0 28px 70px rgba(0,0,0,.55);
+    }
+
+    .card:hover::after { opacity: 1; }
+
+    .card b {
+      font-family: Orbitron, sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      z-index: 1;
+    }
+
+    .card span {
+      margin-top: 14px;
+      font-size: 12px;
+      color: rgba(255,255,255,.58);
+      z-index: 1;
+    }
+
+    .card.active {
+      background: linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.045));
+    }
+
+    .supervised {
+      margin-top: 72px;
+      text-align: center;
+    }
+
+    .supervised h3 {
+      font-family: Orbitron, sans-serif;
+      font-size: 13px;
+      letter-spacing: 6px;
+      color: rgba(255,255,255,.67);
+    }
+
+    .tags {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .tag {
+      padding: 9px 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.13);
+      background: rgba(0,0,0,.18);
+      color: rgba(255,255,255,.72);
+      font-family: Orbitron, sans-serif;
+      font-size: 10px;
+      text-decoration: none;
+      transition: .2s ease;
+    }
+
+    .tag:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,.35);
+      transform: translateY(-3px);
+    }
+
+    footer {
+      margin-top: 34px;
+      font-family: Orbitron, sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,.22);
+      text-align: center;
+    }
+
+    .music {
+      position: fixed;
+      right: 26px;
+      bottom: 26px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: none;
+      color: #fff;
+      background: rgba(0,0,0,.74);
+      box-shadow: 0 10px 35px rgba(0,0,0,.5);
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .snowflake {
+      position: fixed;
+      top: -20px;
+      color: rgba(255,255,255,.65);
+      user-select: none;
+      pointer-events: none;
+      z-index: 2;
+      animation: fall linear forwards;
+      text-shadow: 0 0 12px rgba(255,255,255,.5);
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      background: rgba(0,0,0,.72);
+      backdrop-filter: blur(10px);
+      z-index: 20;
+      padding: 20px;
+    }
+
+    .modal.show { display: grid; }
+
+    .modal-box {
+      width: min(520px, 92vw);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(30,30,30,.92), rgba(6,6,6,.92));
+      box-shadow: 0 35px 90px rgba(0,0,0,.68);
+      padding: 34px;
+      text-align: center;
+    }
+
+    .modal-box h2 {
+      font-family: Orbitron, sans-serif;
+      letter-spacing: 3px;
+      font-size: 28px;
+    }
+
+    .modal-box p {
+      margin-top: 16px;
+      color: rgba(255,255,255,.68);
+      line-height: 1.8;
+    }
+
+    .modal-box button {
+      margin-top: 24px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.07);
+      color: #fff;
+      border-radius: 999px;
+      padding: 12px 26px;
+      cursor: pointer;
+      font-family: Orbitron, sans-serif;
+    }
+
+    @media (max-width: 920px) {
+      .cards { grid-template-columns: repeat(2, 1fr); margin-top: 50px; }
+      .logo-card { height: 270px; }
+    }
+
+    @media (max-width: 520px) {
+      .page { padding-top: 34px; }
+      .cards { grid-template-columns: 1fr; }
+      .subtitle { letter-spacing: 5px; }
+      .wolf-logo { width: 145px; height: 145px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="fog"></div>
+
+  <main class="page">
+    <div class="close">×</div>
+    <h1 class="title">Bangbath</h1>
+    <p class="subtitle">WINTER IS COMING</p>
+
+    <section class="logo-card">
+      <img class="wolf-logo" src="https://cdn.discordapp.com/attachments/1396015956228178101/1397518068501970954/received_1256429626115881-removebg-preview.png?ex=69fdb3a0&is=69fc6220&hm=8c9bfeae9e2563c7dba09fcb877ac74013d588860011b86929b85cd03029a6c5&" alt="Wolf Logo" />
+    </section>
+
+    <section class="cards">
+      <a class="card" href="#stark" data-title="STARK" data-role="Member"><b>STARK</b><span>Member</span></a>
+      <a class="card" href="#finalboss" data-title="FINALBOSS" data-role="Member"><b>FINALBOSS</b><span>Member</span></a>
+      <a class="card active" href="#knxstyle" data-title="KNXSTYLE" data-role="Leader"><b>KNXSTYLE</b><span>Leader</span></a>
+      <a class="card" href="#zerastyle" data-title="ZERASTYLE" data-role="Member"><b>ZERASTYLE</b><span>Member</span></a>
+      <a class="card" href="#conqueror" data-title="CONQUEROR" data-role="Member"><b>CONQUEROR</b><span>Member</span></a>
+    </section>
+
+    <section class="supervised">
+      <h3>SUPERVISED BY</h3>
+      <div class="tags">
+        <a href="#ddot" class="tag">DDOT</a>
+        <a href="#deargod" class="tag">DEARGOD</a>
+        <a href="#drake" class="tag">DRAKE</a>
+        <a href="#tailomiok" class="tag">TAILOMIOK</a>
+        <a href="#bluemobb" class="tag">BLUEMOBB</a>
+        <a href="#dandelions" class="tag">DANDELIONS</a>
+      </div>
+    </section>
+
+    <footer>© 2026 STARK | DESIGNED BY GHOSTXSENTRY | MUSIC CREDITS BY SONXANAX</footer>
+  </main>
+
+  <button class="music" id="musicBtn">Ⅱ</button>
+
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <h2 id="modalTitle">STARK</h2>
+      <p id="modalText">Profile section</p>
+      <button id="closeModal">CLOSE</button>
+    </div>
+  </div>
+
+  <script>
+    const snowChars = ['₿', '₿', '₿'];
+
+    function createSnow() {
+      const s = document.createElement('div');
+      s.className = 'snowflake';
+      s.textContent = snowChars[Math.floor(Math.random() * snowChars.length)];
+      s.style.left = Math.random() * 100 + 'vw';
+      s.style.fontSize = (Math.random() * 14 + 10) + 'px';
+      s.style.opacity = Math.random() * .65 + .25;
+      s.style.animationDuration = (Math.random() * 7 + 5) + 's';
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 13000);
+    }
+    setInterval(createSnow, 230);
+
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalText = document.getElementById('modalText');
+
+    document.querySelectorAll('.card, .tag').forEach(el => {
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        const title = el.dataset.title || el.textContent.trim();
+        const role = el.dataset.role || 'Supervisor';
+        modalTitle.textContent = title;
+        modalText.textContent = `${title} section opened. Role: ${role}. ตรงนี้แก้เป็นลิงก์ รูป ข้อมูล หรือหน้าโปรไฟล์ได้เลย`;
+        modal.classList.add('show');
+      });
+    });
+
+    document.getElementById('closeModal').onclick = () => modal.classList.remove('show');
+    modal.onclick = e => { if (e.target === modal) modal.classList.remove('show'); };
+
+    const musicBtn = document.getElementById('musicBtn');
+    let paused = false;
+    musicBtn.onclick = () => {
+      paused = !paused;
+      musicBtn.textContent = paused ? '▶' : 'Ⅱ';
+      document.querySelector('.wolf-logo').style.animationPlayState = paused ? 'paused' : 'running';
+    };
+  </script>
+</body>
+</html>
