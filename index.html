@@ -3,422 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TEST</title>
+  <title>House of Stark</title>
   <style>
-    @import url('https://cdn.discordapp.com/attachments/1396015956228178101/1397518068501970954/received_1256429626115881-removebg-preview.png?ex=69fdb3a0&is=69fc6220&hm=8c9bfeae9e2563c7dba09fcb877ac74013d588860011b86929b85cd03029a6c5&');
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;600;700&display=swap');
+    *{box-sizing:border-box;margin:0;padding:0} body{min-height:100vh;overflow-x:hidden;color:#f2f2f2;font-family:Inter,sans-serif;background:#050505}.bg{position:fixed;inset:0;z-index:-5;background:radial-gradient(circle at 5% 12%,rgba(255,255,255,.12),transparent 22%),radial-gradient(circle at 88% 78%,rgba(255,255,255,.13),transparent 22%),linear-gradient(90deg,rgba(0,0,0,.92),rgba(18,18,18,.7),rgba(0,0,0,.95)),url('https://images.unsplash.com/photo-1519608487953-e999c86e7455?q=80&w=2200&auto=format&fit=crop');background-size:cover;background-position:center;filter:grayscale(1) contrast(1.1) brightness(.55)}.fog{position:fixed;inset:-20%;z-index:-4;background:radial-gradient(circle at 25% 58%,rgba(255,255,255,.1),transparent 25%),radial-gradient(circle at 70% 48%,rgba(255,255,255,.08),transparent 28%);filter:blur(30px);animation:fogMove 12s ease-in-out infinite alternate}@keyframes fogMove{from{transform:translateX(-2%)}to{transform:translateX(3%)}}.screen{min-height:100vh;padding:45px 26px 30px;display:none;align-items:center;flex-direction:column;position:relative}.screen.active{display:flex}.close{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;margin-bottom:12px;background:rgba(23,26,31,.86);border:1px solid rgba(255,255,255,.07);font-size:25px;box-shadow:0 12px 40px rgba(0,0,0,.38)}.title{font-family:Orbitron,sans-serif;font-size:clamp(34px,5.5vw,78px);line-height:1;letter-spacing:clamp(8px,2vw,22px);text-align:center;text-shadow:0 0 22px rgba(255,255,255,.22)}.subtitle{margin-top:18px;font-family:Orbitron,sans-serif;letter-spacing:11px;font-size:13px;color:rgba(235,241,245,.62);font-weight:700;text-align:center}.logo-card{width:min(720px,92vw);height:330px;margin-top:34px;border-radius:18px;border:1px solid rgba(255,255,255,.13);background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.025));box-shadow:0 36px 85px rgba(0,0,0,.56),inset 0 0 50px rgba(255,255,255,.025);display:grid;place-items:center;backdrop-filter:blur(8px);overflow:hidden;position:relative}.logo-card:before{content:'';position:absolute;inset:-2px;background:linear-gradient(110deg,transparent,rgba(255,255,255,.18),transparent);transform:translateX(-100%);animation:shine 5s infinite}@keyframes shine{0%,45%{transform:translateX(-120%)}70%,100%{transform:translateX(120%)}}.wolf-logo{width:190px;height:190px;object-fit:contain;filter:grayscale(1) drop-shadow(0 0 18px rgba(205,226,255,.18));animation:spin360 7s linear infinite;transform-style:preserve-3d}@keyframes spin360{from{transform:rotateY(0)}to{transform:rotateY(360deg)}}.cards{margin-top:82px;display:grid;grid-template-columns:repeat(5,minmax(145px,1fr));gap:14px;width:min(1120px,95vw)}.card{text-decoration:none;color:#fff;min-height:116px;border-radius:15px;border:1px solid rgba(255,255,255,.13);background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.025));box-shadow:0 22px 60px rgba(0,0,0,.32);display:flex;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(7px);transition:.25s ease;position:relative;overflow:hidden}.card:hover{transform:translateY(-10px) scale(1.025);border-color:rgba(255,255,255,.34);box-shadow:0 24px 75px rgba(255,255,255,.08),0 28px 70px rgba(0,0,0,.55)}.card b{font-family:Orbitron,sans-serif;font-size:20px;letter-spacing:1px;z-index:1}.card span{margin-top:14px;font-size:12px;color:rgba(255,255,255,.58);z-index:1}.card.active{background:linear-gradient(135deg,rgba(255,255,255,.13),rgba(255,255,255,.045))}.supervised{margin-top:72px;text-align:center}.supervised h3{font-family:Orbitron,sans-serif;font-size:13px;letter-spacing:6px;color:rgba(255,255,255,.67)}.tags{margin-top:28px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}.tag{padding:9px 22px;border-radius:999px;border:1px solid rgba(255,255,255,.13);background:rgba(0,0,0,.18);color:rgba(255,255,255,.72);font-family:Orbitron,sans-serif;font-size:10px;text-decoration:none}footer{margin-top:34px;font-family:Orbitron,sans-serif;font-size:10px;letter-spacing:1.5px;color:rgba(255,255,255,.22);text-align:center}.music{position:fixed;left:22px;bottom:22px;width:56px;height:56px;border-radius:50%;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(0,0,0,.74);box-shadow:0 10px 35px rgba(0,0,0,.5);cursor:pointer;font-size:18px;z-index:10}.snowflake{position:fixed;top:-20px;color:rgba(255,255,255,.65);user-select:none;pointer-events:none;z-index:2;animation:fall linear forwards;text-shadow:0 0 12px rgba(255,255,255,.5)}@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      min-height: 100vh;
-      overflow-x: hidden;
-      color: #f2f2f2;
-      font-family: Inter, sans-serif;
-      background: #090909;
-    }
-
-    .page {
-      position: relative;
-      min-height: 100vh;
-      padding: 52px 26px 28px;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      isolation: isolate;
-    }
-
-    .bg {
-      position: fixed;
-      inset: 0;
-      z-index: -5;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.86) 0%, rgba(20,20,20,.58) 42%, rgba(0,0,0,.86) 100%),
-        linear-gradient(180deg, rgba(0,0,0,.68), rgba(0,0,0,.9)),
-        url('https://cdn.discordapp.com/attachments/1396015956228178101/1397518068501970954/received_1256429626115881-removebg-preview.png?ex=69fdb3a0&is=69fc6220&hm=8c9bfeae9e2563c7dba09fcb877ac74013d588860011b86929b85cd03029a6c5&');
-      background-size: cover;
-      background-position: center;
-      filter: grayscale(1) contrast(1.1) brightness(.58);
-    }
-
-    .fog {
-      position: fixed;
-      inset: -20%;
-      z-index: -4;
-      background:
-        radial-gradient(circle at 22% 55%, rgba(255,255,255,.12), transparent 26%),
-        radial-gradient(circle at 72% 42%, rgba(255,255,255,.1), transparent 28%),
-        radial-gradient(circle at 48% 80%, rgba(255,255,255,.06), transparent 28%);
-      filter: blur(30px);
-      animation: fogMove 13s ease-in-out infinite alternate;
-    }
-
-    @keyframes fogMove {
-      from { transform: translateX(-2%) translateY(1%); opacity: .72; }
-      to { transform: translateX(3%) translateY(-1%); opacity: 1; }
-    }
-
-    .close {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      margin-bottom: 12px;
-      background: rgba(23, 26, 31, .86);
-      border: 1px solid rgba(255,255,255,.06);
-      color: #fff;
-      font-size: 25px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.38);
-      opacity: .9;
-    }
-
-    .title {
-      font-family: Orbitron, sans-serif;
-      font-size: clamp(34px, 5.5vw, 78px);
-      line-height: 1;
-      letter-spacing: clamp(8px, 2vw, 22px);
-      text-align: center;
-      font-weight: 700;
-      text-shadow: 0 0 22px rgba(255,255,255,.2);
-    }
-
-    .subtitle {
-      margin-top: 18px;
-      font-family: Orbitron, sans-serif;
-      letter-spacing: 11px;
-      font-size: 13px;
-      color: rgba(235,241,245,.62);
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .logo-card {
-      width: min(720px, 92vw);
-      height: 330px;
-      margin-top: 34px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.13);
-      background: linear-gradient(135deg, rgba(255,255,255,.07), rgba(255,255,255,.025));
-      box-shadow: 0 36px 85px rgba(0,0,0,.56), inset 0 0 50px rgba(255,255,255,.025);
-      display: grid;
-      place-items: center;
-      backdrop-filter: blur(8px);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .logo-card::before {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      background: linear-gradient(110deg, transparent, rgba(255,255,255,.18), transparent);
-      transform: translateX(-100%);
-      animation: shine 5s infinite;
-    }
-
-    @keyframes shine {
-      0%, 45% { transform: translateX(-120%); }
-      70%, 100% { transform: translateX(120%); }
-    }
-
-    .wolf-logo {
-      width: 190px;
-      height: 190px;
-      object-fit: contain;
-      filter: grayscale(1) drop-shadow(0 0 18px rgba(205,226,255,.18));
-      animation: spin360 7s linear infinite;
-      transform-style: preserve-3d;
-    }
-
-    @keyframes spin360 {
-      from { transform: rotateY(0deg); }
-      to { transform: rotateY(360deg); }
-    }
-
-    .cards {
-      margin-top: 92px;
-      display: grid;
-      grid-template-columns: repeat(5, minmax(145px, 1fr));
-      gap: 14px;
-      width: min(1120px, 95vw);
-    }
-
-    .card {
-      text-decoration: none;
-      color: #fff;
-      min-height: 116px;
-      border-radius: 15px;
-      border: 1px solid rgba(255,255,255,.13);
-      background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
-      box-shadow: 0 22px 60px rgba(0,0,0,.32);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(7px);
-      transition: .25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 0%, rgba(255,255,255,.16), transparent 42%);
-      opacity: 0;
-      transition: .25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-10px) scale(1.025);
-      border-color: rgba(255,255,255,.34);
-      box-shadow: 0 24px 75px rgba(255,255,255,.08), 0 28px 70px rgba(0,0,0,.55);
-    }
-
-    .card:hover::after { opacity: 1; }
-
-    .card b {
-      font-family: Orbitron, sans-serif;
-      font-size: 20px;
-      letter-spacing: 1px;
-      z-index: 1;
-    }
-
-    .card span {
-      margin-top: 14px;
-      font-size: 12px;
-      color: rgba(255,255,255,.58);
-      z-index: 1;
-    }
-
-    .card.active {
-      background: linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.045));
-    }
-
-    .supervised {
-      margin-top: 72px;
-      text-align: center;
-    }
-
-    .supervised h3 {
-      font-family: Orbitron, sans-serif;
-      font-size: 13px;
-      letter-spacing: 6px;
-      color: rgba(255,255,255,.67);
-    }
-
-    .tags {
-      margin-top: 28px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .tag {
-      padding: 9px 22px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.13);
-      background: rgba(0,0,0,.18);
-      color: rgba(255,255,255,.72);
-      font-family: Orbitron, sans-serif;
-      font-size: 10px;
-      text-decoration: none;
-      transition: .2s ease;
-    }
-
-    .tag:hover {
-      color: #fff;
-      border-color: rgba(255,255,255,.35);
-      transform: translateY(-3px);
-    }
-
-    footer {
-      margin-top: 34px;
-      font-family: Orbitron, sans-serif;
-      font-size: 10px;
-      letter-spacing: 1.5px;
-      color: rgba(255,255,255,.22);
-      text-align: center;
-    }
-
-    .music {
-      position: fixed;
-      right: 26px;
-      bottom: 26px;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      border: none;
-      color: #fff;
-      background: rgba(0,0,0,.74);
-      box-shadow: 0 10px 35px rgba(0,0,0,.5);
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    .snowflake {
-      position: fixed;
-      top: -20px;
-      color: rgba(255,255,255,.65);
-      user-select: none;
-      pointer-events: none;
-      z-index: 2;
-      animation: fall linear forwards;
-      text-shadow: 0 0 12px rgba(255,255,255,.5);
-    }
-
-    @keyframes fall {
-      to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-    }
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      display: none;
-      place-items: center;
-      background: rgba(0,0,0,.72);
-      backdrop-filter: blur(10px);
-      z-index: 20;
-      padding: 20px;
-    }
-
-    .modal.show { display: grid; }
-
-    .modal-box {
-      width: min(520px, 92vw);
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: linear-gradient(135deg, rgba(30,30,30,.92), rgba(6,6,6,.92));
-      box-shadow: 0 35px 90px rgba(0,0,0,.68);
-      padding: 34px;
-      text-align: center;
-    }
-
-    .modal-box h2 {
-      font-family: Orbitron, sans-serif;
-      letter-spacing: 3px;
-      font-size: 28px;
-    }
-
-    .modal-box p {
-      margin-top: 16px;
-      color: rgba(255,255,255,.68);
-      line-height: 1.8;
-    }
-
-    .modal-box button {
-      margin-top: 24px;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.07);
-      color: #fff;
-      border-radius: 999px;
-      padding: 12px 26px;
-      cursor: pointer;
-      font-family: Orbitron, sans-serif;
-    }
-
-    @media (max-width: 920px) {
-      .cards { grid-template-columns: repeat(2, 1fr); margin-top: 50px; }
-      .logo-card { height: 270px; }
-    }
-
-    @media (max-width: 520px) {
-      .page { padding-top: 34px; }
-      .cards { grid-template-columns: 1fr; }
-      .subtitle { letter-spacing: 5px; }
-      .wolf-logo { width: 145px; height: 145px; }
-    }
+    .member-screen{align-items:center;padding-top:38px}.topbar{width:min(1180px,94vw);display:flex;align-items:center;justify-content:space-between}.back{font-size:28px;color:white;text-decoration:none;padding:10px 14px;border-radius:50%;transition:.2s}.back:hover{background:rgba(255,255,255,.08)}.join{padding:13px 34px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.06);color:white;font-weight:800;text-decoration:none;box-shadow:inset 0 0 25px rgba(255,255,255,.03)}.member-title{margin-top:10px;font-family:Cinzel,serif;font-size:clamp(42px,5vw,74px);letter-spacing:18px;text-align:center;text-shadow:0 0 14px rgba(255,255,255,.75),0 0 36px rgba(255,255,255,.22)}.search-wrap{margin-top:28px;width:min(520px,88vw);height:50px;background:#1e1e1e;transform:skewX(-24deg);border:1px solid rgba(255,255,255,.05);box-shadow:0 18px 45px rgba(0,0,0,.32)}.search-wrap input{width:100%;height:100%;border:0;outline:0;background:transparent;color:#ddd;padding:0 24px;font-size:15px;transform:skewX(24deg)}.member-grid{width:min(1180px,94vw);margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}.member-card{height:210px;border-radius:11px;background:rgba(30,30,30,.93);border:1px solid rgba(255,255,255,.035);box-shadow:0 18px 50px rgba(0,0,0,.34);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:.22s}.member-card:before{content:'';position:absolute;left:-30%;right:-30%;top:50%;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);opacity:.22}.member-card:hover{transform:translateY(-8px);border-color:rgba(255,255,255,.2)}.avatar{width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid rgba(220,225,232,.58);box-shadow:0 0 20px rgba(255,255,255,.12);filter:grayscale(.25)}.member-name{margin-top:18px;font-family:Cinzel,serif;font-size:18px;font-weight:700;text-shadow:0 0 8px rgba(255,255,255,.3)}.fb{margin-top:10px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#eee;color:#222;font-family:Arial;font-weight:900;text-decoration:none}.pagination{margin-top:34px;display:flex;gap:10px;align-items:center;justify-content:center}.page-btn{min-width:44px;height:40px;padding:0 15px;border-radius:999px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);color:#fff;cursor:pointer;font-weight:800}.page-btn.active,.page-btn:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.4)}.empty{grid-column:1/-1;text-align:center;color:#aaa;padding:60px}.hidden{display:none!important}@media(max-width:920px){.cards,.member-grid{grid-template-columns:repeat(2,1fr)}.logo-card{height:270px}.member-title{letter-spacing:10px}.member-grid{gap:18px}}@media(max-width:560px){.screen{padding:28px 16px}.cards,.member-grid{grid-template-columns:1fr}.subtitle{letter-spacing:5px}.wolf-logo{width:145px;height:145px}.topbar{align-items:flex-start}.join{padding:11px 20px}.member-card{height:190px}.member-title{font-size:38px;letter-spacing:5px}}
   </style>
 </head>
 <body>
-  <div class="bg"></div>
-  <div class="fog"></div>
+  <div class="bg"></div><div class="fog"></div>
 
-  <main class="page">
+  <main id="home" class="screen active">
     <div class="close">×</div>
-    <h1 class="title">Bangbath</h1>
+    <h1 class="title">HOUSE OF STARK</h1>
     <p class="subtitle">WINTER IS COMING</p>
-
-    <section class="logo-card">
-      <img class="wolf-logo" src="https://cdn.discordapp.com/attachments/1396015956228178101/1397518068501970954/received_1256429626115881-removebg-preview.png?ex=69fdb3a0&is=69fc6220&hm=8c9bfeae9e2563c7dba09fcb877ac74013d588860011b86929b85cd03029a6c5&" alt="Wolf Logo" />
-    </section>
-
+    <section class="logo-card"><img class="wolf-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/36/Emoji_u1f43a.svg" alt="Wolf Logo"></section>
     <section class="cards">
-      <a class="card" href="#stark" data-title="STARK" data-role="Member"><b>STARK</b><span>Member</span></a>
-      <a class="card" href="#finalboss" data-title="FINALBOSS" data-role="Member"><b>FINALBOSS</b><span>Member</span></a>
-      <a class="card active" href="#knxstyle" data-title="KNXSTYLE" data-role="Leader"><b>KNXSTYLE</b><span>Leader</span></a>
-      <a class="card" href="#zerastyle" data-title="ZERASTYLE" data-role="Member"><b>ZERASTYLE</b><span>Member</span></a>
-      <a class="card" href="#conqueror" data-title="CONQUEROR" data-role="Member"><b>CONQUEROR</b><span>Member</span></a>
+      <a class="card open-members" href="#"><b>STARK</b><span>Member</span></a>
+      <a class="card open-members" href="#"><b>FINALBOSS</b><span>Member</span></a>
+      <a class="card active open-members" href="#"><b>KNXSTYLE</b><span>Leader</span></a>
+      <a class="card open-members" href="#"><b>ZERASTYLE</b><span>Member</span></a>
+      <a class="card open-members" href="#"><b>CONQUEROR</b><span>Member</span></a>
     </section>
-
-    <section class="supervised">
-      <h3>SUPERVISED BY</h3>
-      <div class="tags">
-        <a href="#ddot" class="tag">DDOT</a>
-        <a href="#deargod" class="tag">DEARGOD</a>
-        <a href="#drake" class="tag">DRAKE</a>
-        <a href="#tailomiok" class="tag">TAILOMIOK</a>
-        <a href="#bluemobb" class="tag">BLUEMOBB</a>
-        <a href="#dandelions" class="tag">DANDELIONS</a>
-      </div>
-    </section>
-
+    <section class="supervised"><h3>SUPERVISED BY</h3><div class="tags"><a href="#" class="tag open-members">DDOT</a><a href="#" class="tag open-members">DEARGOD</a><a href="#" class="tag open-members">DRAKE</a><a href="#" class="tag open-members">TAILOMIOK</a><a href="#" class="tag open-members">BLUEMOBB</a><a href="#" class="tag open-members">DANDELIONS</a></div></section>
     <footer>© 2026 STARK | DESIGNED BY GHOSTXSENTRY | MUSIC CREDITS BY SONXANAX</footer>
+  </main>
+
+  <main id="members" class="screen member-screen">
+    <div class="topbar"><a href="#" id="backHome" class="back">‹</a><a class="join" href="#">สมัครเข้า STARK</a></div>
+    <h1 class="member-title">MEMBER - STARK</h1>
+    <div class="search-wrap"><input id="search" placeholder="⌕  ค้นหาสมาชิก..."></div>
+    <section id="memberGrid" class="member-grid"></section>
+    <div id="pagination" class="pagination"></div>
   </main>
 
   <button class="music" id="musicBtn">Ⅱ</button>
 
-  <div class="modal" id="modal">
-    <div class="modal-box">
-      <h2 id="modalTitle">STARK</h2>
-      <p id="modalText">Profile section</p>
-      <button id="closeModal">CLOSE</button>
-    </div>
-  </div>
-
   <script>
-    const snowChars = ['₿', '₿', '₿'];
+    const members=[
 
-    function createSnow() {
-      const s = document.createElement('div');
-      s.className = 'snowflake';
-      s.textContent = snowChars[Math.floor(Math.random() * snowChars.length)];
-      s.style.left = Math.random() * 100 + 'vw';
-      s.style.fontSize = (Math.random() * 14 + 10) + 'px';
-      s.style.opacity = Math.random() * .65 + .25;
-      s.style.animationDuration = (Math.random() * 7 + 5) + 's';
-      document.body.appendChild(s);
-      setTimeout(() => s.remove(), 13000);
+    ];
+    const perPage=6; let page=1; let keyword='';
+    const home=document.getElementById('home'), membersPage=document.getElementById('members'), grid=document.getElementById('memberGrid'), pagination=document.getElementById('pagination');
+    function showMembers(){home.classList.remove('active');membersPage.classList.add('active');window.scrollTo(0,0);renderMembers()}
+    function showHome(){membersPage.classList.remove('active');home.classList.add('active');window.scrollTo(0,0)}
+    document.querySelectorAll('.open-members').forEach(x=>x.onclick=e=>{e.preventDefault();showMembers()});
+    document.getElementById('backHome').onclick=e=>{e.preventDefault();showHome()};
+    function renderMembers(){
+      const list=members.filter(m=>m[0].toLowerCase().includes(keyword.toLowerCase()));
+      const total=Math.max(1,Math.ceil(list.length/perPage)); if(page>total)page=total;
+      const start=(page-1)*perPage; const shown=list.slice(start,start+perPage);
+      grid.innerHTML=shown.length?shown.map(m=>`<article class="member-card"><img class="avatar" src="${m[1]}" alt="${m[0]}"><div class="member-name">${m[0]}</div><a class="fb" href="https://facebook.com" target="_blank">f</a></article>`).join(''):'<div class="empty">ไม่เจอสมาชิกที่ค้นหา</div>';
+      pagination.innerHTML=`<button class="page-btn" ${page===1?'disabled':''} onclick="changePage(${page-1})">Back</button>`+Array.from({length:total},(_,i)=>`<button class="page-btn ${page===i+1?'active':''}" onclick="changePage(${i+1})">${i+1}</button>`).join('')+`<button class="page-btn" ${page===total?'disabled':''} onclick="changePage(${page+1})">Next</button>`;
     }
-    setInterval(createSnow, 230);
-
-    const modal = document.getElementById('modal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalText = document.getElementById('modalText');
-
-    document.querySelectorAll('.card, .tag').forEach(el => {
-      el.addEventListener('click', e => {
-        e.preventDefault();
-        const title = el.dataset.title || el.textContent.trim();
-        const role = el.dataset.role || 'Supervisor';
-        modalTitle.textContent = title;
-        modalText.textContent = `${title} section opened. Role: ${role}. ตรงนี้แก้เป็นลิงก์ รูป ข้อมูล หรือหน้าโปรไฟล์ได้เลย`;
-        modal.classList.add('show');
-      });
-    });
-
-    document.getElementById('closeModal').onclick = () => modal.classList.remove('show');
-    modal.onclick = e => { if (e.target === modal) modal.classList.remove('show'); };
-
-    const musicBtn = document.getElementById('musicBtn');
-    let paused = false;
-    musicBtn.onclick = () => {
-      paused = !paused;
-      musicBtn.textContent = paused ? '▶' : 'Ⅱ';
-      document.querySelector('.wolf-logo').style.animationPlayState = paused ? 'paused' : 'running';
-    };
+    window.changePage=n=>{page=n;renderMembers();window.scrollTo({top:0,behavior:'smooth'})};
+    document.getElementById('search').oninput=e=>{keyword=e.target.value;page=1;renderMembers()};
+    const snowChars=['❄','✻','✼'];function createSnow(){const s=document.createElement('div');s.className='snowflake';s.textContent=snowChars[Math.floor(Math.random()*snowChars.length)];s.style.left=Math.random()*100+'vw';s.style.fontSize=(Math.random()*14+10)+'px';s.style.opacity=Math.random()*.65+.25;s.style.animationDuration=(Math.random()*7+5)+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),13000)}setInterval(createSnow,260);
+    let paused=false;document.getElementById('musicBtn').onclick=()=>{paused=!paused;document.getElementById('musicBtn').textContent=paused?'▶':'Ⅱ';document.querySelector('.wolf-logo').style.animationPlayState=paused?'paused':'running'};
   </script>
 </body>
 </html>
