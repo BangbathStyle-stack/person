@@ -1,1175 +1,238 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>House of Fakemafuck&Bangbath</title>
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Inter:wght@300;400;600;700;800&display=swap');
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --white: #f5f5f5;
-      --muted: rgba(255,255,255,.58);
-      --glass: rgba(255,255,255,.065);
-      --line: rgba(255,255,255,.14);
-      --dark: #050505;
-    }
-
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    body {
-      color: var(--white);
-      font-family: Inter, sans-serif;
-      background: var(--dark);
-    }
-
-    .bg {
-      position: fixed;
-      inset: 0;
-      z-index: -5;
-
-      background:
-        radial-gradient(circle at 50% 7%, rgba(255,255,255,.15), transparent 15%),
-        radial-gradient(circle at 5% 12%, rgba(255,255,255,.11), transparent 22%),
-        radial-gradient(circle at 90% 82%, rgba(255,255,255,.10), transparent 25%),
-        linear-gradient(180deg, rgba(0,0,0,.70), rgba(0,0,0,.96)),
-        url('https://img1.pic.in.th/images/dddddd-Photoroom.png');
-
-      background-size: cover;
-      background-position: center;
-      filter: grayscale(1) contrast(1.18) brightness(.48);
-    }
-
-    .bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.68), transparent 34%, transparent 66%, rgba(0,0,0,.68)),
-        radial-gradient(circle at center, transparent 35%, rgba(0,0,0,.72));
-
-      pointer-events: none;
-    }
-
-    .fog {
-      position: fixed;
-      inset: -20%;
-      z-index: -4;
-
-      background:
-        radial-gradient(circle at 25% 58%, rgba(255,255,255,.10), transparent 25%),
-        radial-gradient(circle at 70% 48%, rgba(255,255,255,.08), transparent 28%);
-
-      filter: blur(34px);
-      animation: fogMove 12s ease-in-out infinite alternate;
-      pointer-events: none;
-    }
-
-    @keyframes fogMove {
-      from { transform: translateX(-2%); }
-      to   { transform: translateX(3%); }
-    }
-
-    .screen {
-      width: 100vw;
-      height: 100vh;
-
-      display: none;
-      position: relative;
-    }
-
-    .screen.active {
-      display: flex;
-    }
-
-    /* =========================
-       HOME PAGE
-       หน้าแรก: ล็อกไม่ให้เลื่อน
-    ========================= */
-    #home {
-      overflow: hidden;
-      align-items: center;
-      justify-content: center;
-      padding: 0 24px;
-    }
-
-    .page-shell {
-      width: min(1180px, 96vw);
-      height: 100vh;
-      padding: 18px 38px 88px;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      border: none;
-      background: transparent;
-      box-shadow: none;
-    }
-
-    .title {
-      margin-top: 0;
-
-      font-family: Orbitron, sans-serif;
-      font-size: clamp(38px, 5.2vw, 82px);
-      font-weight: 900;
-      line-height: 1;
-      letter-spacing: clamp(10px, 2.1vw, 24px);
-      text-align: center;
-      white-space: nowrap;
-
-      color: #f8f8f8;
-
-      text-shadow:
-        0 0 10px rgba(255,255,255,.62),
-        0 0 26px rgba(255,255,255,.22),
-        0 18px 40px rgba(0,0,0,.95);
-    }
-
-    .subtitle {
-      margin-top: 20px;
-
-      font-family: Orbitron, sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 10px;
-      text-align: center;
-      white-space: nowrap;
-
-      color: rgba(235,241,245,.62);
-    }
-
-    .logo-card {
-      width: min(760px, 82vw);
-      height: 330px;
-      margin-top: 38px;
-
-      position: relative;
-      overflow: hidden;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 24px;
-      border: 1px solid rgba(255,255,255,.10);
-
-      background:
-        radial-gradient(circle at 50% 42%, rgba(255,255,255,.10), transparent 16%),
-        radial-gradient(circle at center, rgba(255,255,255,.055), transparent 56%),
-        linear-gradient(180deg, rgba(255,255,255,.025), rgba(0,0,0,.50));
-
-      backdrop-filter: blur(10px);
-
-      box-shadow:
-        0 38px 105px rgba(0,0,0,.72),
-        inset 0 0 76px rgba(255,255,255,.022),
-        inset 0 0 1px rgba(255,255,255,.22);
-    }
-
-    .logo-card::before {
-      content: '';
-      position: absolute;
-      inset: 12px;
-
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,.055);
-
-      pointer-events: none;
-    }
-
-    .logo-card::after {
-      content: '';
-      position: absolute;
-      left: 9%;
-      right: 9%;
-      bottom: 48px;
-      height: 70px;
-
-      background: radial-gradient(ellipse at center, rgba(255,255,255,.17), transparent 68%);
-      filter: blur(24px);
-      opacity: .40;
-
-      pointer-events: none;
-    }
-
-    .logo-overlay {
-      position: absolute;
-      inset: 0;
-
-      background:
-        linear-gradient(120deg, transparent 8%, rgba(255,255,255,.105), transparent 35%),
-        radial-gradient(circle at center, rgba(255,255,255,.08), transparent 62%);
-
-      filter: blur(22px);
-      opacity: .46;
-      pointer-events: none;
-    }
-
-    .wolf-logo {
-      width: 500px;
-      max-width: 88%;
-
-      position: relative;
-      z-index: 2;
-
-      object-fit: contain;
-      animation: none;
-      transform: none;
-
-      filter:
-        grayscale(1)
-        brightness(.78)
-        contrast(1.36)
-        saturate(.12)
-        drop-shadow(0 0 2px rgba(255,255,255,.78))
-        drop-shadow(0 10px 18px rgba(0,0,0,.96))
-        drop-shadow(0 28px 40px rgba(0,0,0,.88));
-    }
-
-    .cards {
-      width: min(900px, 82vw);
-      margin-top: 38px;
-
-      display: grid;
-      grid-template-columns: repeat(3, minmax(220px, 1fr));
-      gap: 22px;
-      justify-content: center;
-    }
-
-    .card {
-      min-height: 104px;
-      padding: 20px 20px;
-
-      position: relative;
-      overflow: hidden;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      text-decoration: none;
-      color: #fff;
-
-      border-radius: 15px;
-      border: 1px solid rgba(255,255,255,.12);
-      background:
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,.09), transparent 38%),
-        linear-gradient(180deg, rgba(255,255,255,.045), rgba(0,0,0,.50));
-
-      backdrop-filter: blur(8px);
-
-      box-shadow:
-        0 22px 62px rgba(0,0,0,.38),
-        inset 0 0 28px rgba(255,255,255,.02);
-
-      transition: .25s ease;
-    }
-
-    .card::after {
-      content: '';
-      position: absolute;
-      inset: 1px;
-      border-radius: inherit;
-      background: linear-gradient(135deg, rgba(255,255,255,.08), transparent 40%);
-      pointer-events: none;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(255,255,255,.30);
-      box-shadow:
-        0 30px 90px rgba(0,0,0,.60),
-        0 0 24px rgba(255,255,255,.055),
-        inset 0 0 44px rgba(255,255,255,.035);
-    }
-
-    .card b {
-      z-index: 1;
-
-      font-family: Orbitron, sans-serif;
-      font-size: 17px;
-      font-weight: 900;
-      letter-spacing: 8px;
-      text-transform: uppercase;
-
-      color: rgba(255,255,255,.94);
-      text-shadow: 0 0 15px rgba(255,255,255,.18);
-    }
-
-    .card span {
-      z-index: 1;
-      margin-top: 12px;
-
-      font-family: Orbitron, sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-
-      color: rgba(255,255,255,.54);
-    }
-
-    .card.active {
-      border-color: rgba(255,255,255,.24);
-      background:
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,.16), transparent 38%),
-        linear-gradient(180deg, rgba(255,255,255,.075), rgba(0,0,0,.58));
-    }
-
-    .site-footer {
-      margin-top: 22px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-
-      font-family: Orbitron, sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-
-      color: rgba(255,255,255,.70);
-      text-align: center;
-      text-shadow: 0 0 14px rgba(255,255,255,.14);
-    }
-
-    .site-footer .split {
-      color: rgba(255,255,255,.28);
-    }
-
-    /* =========================
-       MEMBER PAGE
-       หน้ารายชื่อ: ให้เลื่อนได้
-    ========================= */
-    #members {
-      height: 100vh;
-      overflow-y: auto;
-      overflow-x: hidden;
-      align-items: center;
-      flex-direction: column;
-      padding: 46px 24px 130px;
-    }
-
-    #members.active {
-      display: flex;
-    }
-
-    #members::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    #members::-webkit-scrollbar-track {
-      background: rgba(255,255,255,.035);
-    }
-
-    #members::-webkit-scrollbar-thumb {
-      border-radius: 999px;
-      background: rgba(255,255,255,.22);
-    }
-
-    .topbar {
-      width: min(1180px, 94vw);
-      min-height: 50px;
-      margin-bottom: 18px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .back {
-      width: 44px;
-      height: 44px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 50%;
-      color: white;
-      font-size: 32px;
-      text-decoration: none;
-
-      transition: .2s;
-    }
-
-    .back:hover {
-      background: rgba(255,255,255,.08);
-    }
-
-    .join {
-      padding: 13px 34px;
-
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.28);
-      background: rgba(255,255,255,.06);
-
-      color: white;
-      font-weight: 800;
-      text-decoration: none;
-
-      box-shadow: inset 0 0 25px rgba(255,255,255,.03);
-    }
-
-    .member-title {
-      margin-top: 0;
-
-      font-family: Orbitron, sans-serif;
-      font-size: clamp(38px, 5vw, 74px);
-      font-weight: 900;
-      letter-spacing: 14px;
-      text-align: center;
-
-      text-shadow:
-        0 0 14px rgba(255,255,255,.75),
-        0 0 36px rgba(255,255,255,.22);
-    }
-
-    .search-wrap {
-      width: min(520px, 88vw);
-      height: 50px;
-      margin-top: 28px;
-
-      transform: skewX(-24deg);
-
-      border: 1px solid rgba(255,255,255,.07);
-      background: rgba(20,20,20,.82);
-
-      box-shadow: 0 18px 45px rgba(0,0,0,.32);
-    }
-
-    .search-wrap input {
-      width: 100%;
-      height: 100%;
-
-      padding: 0 24px;
-
-      border: 0;
-      outline: 0;
-      background: transparent;
-
-      color: #ddd;
-      font-size: 15px;
-
-      transform: skewX(24deg);
-    }
-
-    .member-grid {
-      width: min(1180px, 94vw);
-      margin-top: 64px;
-
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-    }
-
-    .member-card {
-      height: 210px;
-
-      position: relative;
-      overflow: hidden;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.10);
-      background:
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,.08), transparent 34%),
-        linear-gradient(180deg, rgba(255,255,255,.045), rgba(10,10,10,.88));
-
-      box-shadow:
-        0 24px 70px rgba(0,0,0,.42),
-        inset 0 0 40px rgba(255,255,255,.02);
-
-      transition: .22s;
-    }
-
-    .member-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(255,255,255,.24);
-      box-shadow:
-        0 30px 90px rgba(0,0,0,.58),
-        0 0 22px rgba(255,255,255,.05),
-        inset 0 0 46px rgba(255,255,255,.035);
-    }
-
-    .avatar,
-    .empty-avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-    }
-
-    .avatar {
-      border: 3px solid rgba(220,225,232,.58);
-
-      object-fit: cover;
-      filter: grayscale(.25);
-
-      box-shadow: 0 0 20px rgba(255,255,255,.12);
-    }
-
-    .empty-avatar {
-      border: none;
-      background: transparent;
-      box-shadow: none;
-    }
-
-    .member-name {
-      margin-top: 18px;
-
-      font-family: Orbitron, sans-serif;
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-
-      text-shadow: 0 0 8px rgba(255,255,255,.3);
-    }
-
-    .fb {
-      width: 24px;
-      height: 24px;
-      margin-top: 10px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 50%;
-      background: #eee;
-
-      color: #222;
-      font-family: Arial;
-      font-weight: 900;
-      text-decoration: none;
-    }
-
-    .pagination {
-      margin-top: 34px;
-
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .page-btn {
-      min-width: 44px;
-      height: 46px;
-      padding: 0 24px;
-
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.15);
-      background: rgba(255,255,255,.05);
-
-      color: #fff;
-      font-weight: 800;
-      cursor: pointer;
-
-      box-shadow: inset 0 0 22px rgba(255,255,255,.025);
-    }
-
-    .page-btn:hover {
-      background: rgba(255,255,255,.18);
-      border-color: rgba(255,255,255,.4);
-    }
-
-    .page-btn:disabled {
-      opacity: .45;
-      cursor: not-allowed;
-    }
-
-    .page-count {
-      height: 46px;
-      padding: 0 22px;
-
-      display: grid;
-      place-items: center;
-
-      color: #fff;
-      font-family: Orbitron, sans-serif;
-      font-size: 16px;
-      font-weight: 900;
-
-      text-shadow: 0 0 12px rgba(255,255,255,.55);
-    }
-
-    .empty {
-      grid-column: 1 / -1;
-      padding: 60px;
-      text-align: center;
-      color: #aaa;
-    }
-
-    /* =========================
-       MUSIC / SNOW
-    ========================= */
-    .snowflake {
-      position: fixed;
-      top: -20px;
-      z-index: 2;
-
-      color: rgba(255,255,255,.52);
-      user-select: none;
-      pointer-events: none;
-
-      text-shadow: 0 0 12px rgba(255,255,255,.45);
-      animation: fall linear forwards;
-    }
-
-    @keyframes fall {
-      to {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    .music-player {
-      position: fixed;
-      left: 22px;
-      bottom: 22px;
-      z-index: 20;
-
-      width: 330px;
-      max-width: calc(100vw - 44px);
-      padding: 14px;
-
-      display: grid;
-      grid-template-columns: 56px 1fr 46px;
-      gap: 12px;
-      align-items: center;
-
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,.14);
-
-      background:
-        radial-gradient(circle at 20% 0%, rgba(255,255,255,.13), transparent 34%),
-        linear-gradient(135deg, rgba(255,255,255,.08), rgba(0,0,0,.72));
-
-      backdrop-filter: blur(14px);
-
-      box-shadow:
-        0 28px 90px rgba(0,0,0,.68),
-        inset 0 0 36px rgba(255,255,255,.035);
-    }
-
-    .music-disc {
-      width: 56px;
-      height: 56px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.22);
-      background:
-        radial-gradient(circle, rgba(255,255,255,.32), transparent 12%),
-        conic-gradient(from 90deg, #111, #555, #080808, #777, #111);
-
-      box-shadow:
-        0 0 24px rgba(255,255,255,.12),
-        inset 0 0 20px rgba(0,0,0,.8);
-
-      font-size: 20px;
-    }
-
-    .music-player.playing .music-disc {
-      animation: discSpin 3.4s linear infinite;
-    }
-
-    @keyframes discSpin {
-      to { transform: rotate(360deg); }
-    }
-
-    .music-info {
-      min-width: 0;
-    }
-
-    .music-label {
-      font-family: Orbitron, sans-serif;
-      font-size: 10px;
-      letter-spacing: 3px;
-      color: rgba(255,255,255,.45);
-    }
-
-    .music-title {
-      margin-top: 4px;
-
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-
-      font-family: Orbitron, sans-serif;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      color: rgba(255,255,255,.92);
-    }
-
-    .music-progress {
-      width: 100%;
-      height: 4px;
-      margin-top: 10px;
-
-      overflow: hidden;
-
-      border-radius: 999px;
-      background: rgba(255,255,255,.12);
-    }
-
-    .music-bar {
-      width: 0%;
-      height: 100%;
-
-      border-radius: inherit;
-      background: linear-gradient(90deg, rgba(255,255,255,.45), rgba(255,255,255,.95));
-      box-shadow: 0 0 14px rgba(255,255,255,.35);
-    }
-
-    .music-toggle {
-      width: 46px;
-      height: 46px;
-
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.08);
-
-      color: #fff;
-      cursor: pointer;
-      font-size: 15px;
-
-      box-shadow:
-        0 12px 38px rgba(0,0,0,.48),
-        inset 0 0 18px rgba(255,255,255,.035);
-    }
-
-    .music-toggle:hover {
-      background: rgba(255,255,255,.16);
-      border-color: rgba(255,255,255,.35);
-    }
-
-    @media (max-width: 920px) {
-      #home {
-        padding: 0 16px;
-      }
-
-      .page-shell {
-        padding: 18px 18px 92px;
-      }
-
-      .title {
-        font-size: clamp(32px, 7vw, 58px);
-        letter-spacing: clamp(6px, 1.7vw, 14px);
-      }
-
-      .logo-card {
-        width: min(720px, 90vw);
-        height: 300px;
-        margin-top: 34px;
-      }
-
-      .wolf-logo {
-        width: 440px;
-      }
-
-      .cards {
-        width: min(760px, 90vw);
-        grid-template-columns: repeat(3, minmax(160px, 1fr));
-        gap: 16px;
-        margin-top: 32px;
-      }
-
-      .card b {
-        font-size: 14px;
-        letter-spacing: 5px;
-      }
-
-      .member-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 560px) {
-      .page-shell {
-        padding: 14px 12px 96px;
-      }
-
-      .title {
-        font-size: 28px;
-        letter-spacing: 4px;
-      }
-
-      .subtitle {
-        margin-top: 14px;
-        font-size: 9px;
-        letter-spacing: 4px;
-      }
-
-      .logo-card {
-        width: min(520px, 94vw);
-        height: 230px;
-        margin-top: 28px;
-        border-radius: 20px;
-      }
-
-      .wolf-logo {
-        width: 300px;
-      }
-
-      .cards {
-        width: min(520px, 94vw);
-        grid-template-columns: 1fr;
-        gap: 12px;
-        margin-top: 26px;
-      }
-
-      .card {
-        min-height: 82px;
-      }
-
-      .member-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .member-title {
-        font-size: 34px;
-        letter-spacing: 5px;
-      }
-
-      .music-player {
-        left: 12px;
-        bottom: 12px;
-        width: calc(100vw - 24px);
-        grid-template-columns: 48px 1fr 42px;
-        padding: 12px;
-      }
-
-      .music-disc {
-        width: 48px;
-        height: 48px;
-      }
-
-      .music-toggle {
-        width: 42px;
-        height: 42px;
-      }
-
-      .site-footer {
-        font-size: 9px;
-        gap: 6px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BANGBATHBXY</title>
+<link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1436073830413107200/1452567527086493816/image.png?ex=6a8b4dad&is=6a89fc2d&hm=53840aee6f322238664b61d771810c6bd1dba0cf7d0818718d8d1e07c64aebac&">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  body {
+    position: relative;
+    background-color: #000;
+  }
+
+  .bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    filter: grayscale(35%) brightness(0.55);
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 1;
+  }
+
+  .topbar {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3px;
+    width: 90px;
+    background: #000000;
+    border-radius: 0 0 4px 4px;
+    z-index: 5;
+  }
+
+  .center {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .logo-box {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .logo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .logo-label {
+    font-size: 12px;
+    letter-spacing: 6px;
+    color: #f2f2f2;
+    font-weight: 700;
+    margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo-label .line {
+    width: 36px;
+    height: 1px;
+    background: #555;
+  }
+
+  /* Typewriter title */
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111111;
+  }
+
+  .title {
+    --letter-gap: 14px;
+    font-family: 'Arial Black', Arial, sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 76px;
+    letter-spacing: var(--letter-gap);
+    color: #fafafa;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .title .typed {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typeLoop 6s steps(9, end) infinite;
+  }
+
+  .title .cursor {
+    display: inline-block;
+    width: 4px;
+    height: 60px;
+    background: #fafafa;
+    margin-left: 16px;
+    animation: blink 0.9s step-end infinite;
+  }
+
+  @keyframes typeLoop {
+    0%   { width: 0; }
+    30%  { width: calc(12.5ch + 12 * var(--letter-gap)); }
+    60%  { width: calc(12.5ch + 12 * var(--letter-gap)); }
+    90%  { width: 0; }
+    100% { width: 0; }
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  @media (max-width: 800px) {
+    .title { font-size: 42px; --letter-gap: 8px; }
+    .title .cursor { height: 34px; }
+  }
+
+  .enter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 52px;
+    padding: 14px 36px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 99px;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background .25s, border-color .25s, transform .18s, box-shadow .25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .enter-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 100%);
+    opacity: 0;
+    transition: opacity .25s;
+  }
+
+  .enter-btn:hover {
+    border-color: rgba(255,255,255,0.6);
+    box-shadow: 0 0 32px rgba(255,255,255,0.08), 0 8px 24px rgba(0,0,0,0.5);
+    transform: translateY(-2px);
+  }
+
+  .enter-btn:hover::before { opacity: 1; }
+
+  .enter-btn:active { transform: translateY(0px); }
+
+  .enter-arrow {
+    display: flex;
+    align-items: center;
+    transition: transform .2s;
+  }
+
+  .enter-btn:hover .enter-arrow { transform: translateX(4px); }
+</style>
 </head>
-
 <body>
-  <div class="bg"></div>
-  <div class="fog"></div>
 
-  <main id="home" class="screen active">
-    <div class="page-shell">
-      <h1 class="title">FakemaFuck&888</h1>
-      <p class="subtitle">— KING OF WEAPON ON TOP FIVE M —</p>
+<img class="bg" src="https://files.catbox.moe/rwtpd9.gif">
+<div class="overlay"></div>
 
-      <section class="logo-card">
-        <div class="logo-overlay"></div>
+<div class="topbar"></div>
 
-        <img
-          class="wolf-logo"
-          src="https://img2.pic.in.th/aa165e77-22e6-458b-989d-50944e6b20c5-removebg-preview.png"
-          alt="Logo"
-        >
-      </section>
+<div class="center">
 
-      <section class="cards">
-        <a class="card open-members" href="#">
-          <b>FAKEMAFUCK</b>
-          <span>Member</span>
-        </a>
-
-        <a class="card active open-members" href="#">
-          <b>BANGBATH</b>
-          <span>Member</span>
-        </a>
-
-        <a class="card open-members" href="#">
-          <b>NAKORNBAL</b>
-          <span>Member</span>
-        </a>
-      </section>
-
-      <footer class="site-footer">
-        <span>© 2025 FakamaFuck And BangBath</span>
-        <span class="split">|</span>
-        <span>DESIGNED BY Payu HighNeverDie</span>
-        <span class="split">|</span>
-        <span></span>
-      </footer>
-    </div>
-  </main>
-
-  <main id="members" class="screen member-screen">
-    <div class="topbar">
-      <a href="#" id="backHome" class="back">‹</a>
-      <a class="join" href="#">สมัครเข้า Fakemafuck</a>
-    </div>
-
-    <h1 class="member-title">MEMBER - Fakemafuck</h1>
-
-    <div class="search-wrap">
-      <input id="search" placeholder="⌕  Search">
-    </div>
-
-    <section id="memberGrid" class="member-grid"></section>
-
-    <div id="pagination" class="pagination"></div>
-  </main>
-
-  <audio id="bgMusic" src="https://files.catbox.moe/p30f2m.mp3" preload="metadata" loop></audio>
-
-  <div class="music-player" id="musicPlayer">
-    <div class="music-disc">♪</div>
-
-    <div class="music-info">
-      <div class="music-label">MUSIC PLAYER</div>
-      <div class="music-title" id="musicTitle">ใส่ลิงก์เพลงใน audio src</div>
-
-      <div class="music-progress">
-        <div class="music-bar" id="musicBar"></div>
-      </div>
-    </div>
-
-    <button class="music-toggle" id="musicBtn">▶</button>
+  <div class="logo-label">
+    <span class="line"></span>
+    ALL PLAYERBANGBATH CLEAN
+    <span class="line"></span>
   </div>
 
-  <script>
-    const memberData = {
-      FAKEMAFUCK: [
-        ['Pond HighNeverdie', 'https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/pond.vorpard'],
-        ['Payu HighNeverdie', 'https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/zent.bangbath'],
-        ['Nongkim HighNeverdie', 'https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/profile.php?id=61585472849187'],
-        ['Sixta Fakemafuck', 'https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/arnatbangbathbxy'],
-        ['Zab Fakemafuck', 'https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/zab.vs.2025'],
-        ['Bruno Fakemafuck', 'https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/profile.php?id=100078732036608'],
-        ['NongMara Fakemafuck', 'https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/profile.php?id=61587886358228'],
-        ['Wei HighNeverdie', 'https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/userlub36']
-      ],
+  <div class="title">
+    <span class="typed">BANGBATHBXY</span>
+    <span class="cursor"></span>
+  </div>
 
-      BANGBATH: [
-        ['Inject Vorpard', 'https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/gsoon.gsoon.gsoon'],
-        ['Dxlta Bangbath', 'https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/profile.php?id=61573355305703'],
-        ['Pued Bangbathbxy', 'https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/profile.php?id=100077674954991'],
-        ['Lolay Bangbathbxy', 'https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/LolayLovelee'],
-        ['Bell Bangbathbxy','https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/bell.versix'],
-        ['Sadly Bangbathbxy', 'https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/sadly.realboy'],
-        ['Sleep Bangbathbxy', 'https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/leepz.nataros'],
-        ['Sunny Bangbathbxy', 'https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/profile.php?id=61552569053838'],       
-        ['Benzin Bangbathbxby', 'https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/profile.php?id=61578162264438']
-      ],
+  <a class="enter-btn" href="member.html">
+    ENTER
+    <span class="enter-arrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </span>
+  </a>
 
-      NAKORNBAL: [
-        ['Jaquar Bangbath', 'https://img1.pic.in.th/images/banggggggggggg.png','https://www.facebook.com/profile.php?id=61572409596437']
-      ]
-    };
+</div>
 
-    let currentGroup = 'FAKEMAFUCK';
-    let page = 1;
-    let keyword = '';
-
-    const perPage = 9;
-
-    const home = document.getElementById('home');
-    const membersPage = document.getElementById('members');
-    const grid = document.getElementById('memberGrid');
-    const pagination = document.getElementById('pagination');
-    const searchInput = document.getElementById('search');
-
-    function showMembers(group = 'FAKEMAFUCK') {
-      currentGroup = group;
-      page = 1;
-      keyword = '';
-
-      searchInput.value = '';
-
-      document.querySelector('.member-title').textContent = 'MEMBER - ' + group;
-      document.querySelector('.join').textContent = 'สมัครเข้า ' + group;
-
-      home.classList.remove('active');
-      membersPage.classList.add('active');
-
-      membersPage.scrollTo(0, 0);
-      renderMembers();
-    }
-
-    function showHome() {
-      membersPage.classList.remove('active');
-      home.classList.add('active');
-    }
-
-    function renderMembers() {
-      const list = (memberData[currentGroup] || []).filter(member => {
-        return member[0].toLowerCase().includes(keyword.toLowerCase());
-      });
-
-      const total = Math.max(1, Math.ceil(list.length / perPage));
-
-      if (page > total) {
-        page = total;
-      }
-
-      const start = (page - 1) * perPage;
-      const shown = list.slice(start, start + perPage);
-
-      grid.innerHTML = shown.length
-        ? shown.map(member => createMemberCard(member)).join('')
-        : '<div class="empty">ไม่เจอสมาชิกที่ค้นหา</div>';
-
-      pagination.innerHTML = `
-        <button class="page-btn nav-btn" ${page === 1 ? 'disabled' : ''} onclick="changePage(${page - 1})">
-          ‹ ก่อนหน้า
-        </button>
-
-        <div class="page-count">หน้า ${page}/${total}</div>
-
-        <button class="page-btn nav-btn" ${page === total ? 'disabled' : ''} onclick="changePage(${page + 1})">
-          ถัดไป ›
-        </button>
-      `;
-    }
-
-   function createMemberCard(member) {
-  const name = member[0];
-  const image = member[1];
-  const fbLink = member[2] || '#';
-
-  return `
-    <article class="member-card">
-      ${image ? `<img class="avatar" src="${image}" alt="${name}">` : `<div class="empty-avatar"></div>`}
-      <div class="member-name">${name}</div>
-      <a class="fb" href="${fbLink}" target="_blank">f</a>
-    </article>
-  `;
-}
-
-    window.changePage = function (nextPage) {
-      page = nextPage;
-      renderMembers();
-
-      membersPage.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    };
-
-    document.querySelectorAll('.cards .open-members').forEach(card => {
-      card.onclick = event => {
-        event.preventDefault();
-
-        const group = card.querySelector('b').textContent.trim();
-        showMembers(group);
-      };
-    });
-
-    document.getElementById('backHome').onclick = event => {
-      event.preventDefault();
-      showHome();
-    };
-
-    searchInput.oninput = event => {
-      keyword = event.target.value;
-      page = 1;
-      renderMembers();
-    };
-
-    const snowChars = ['₿', '฿', '$'];
-
-    function createSnow() {
-      const snow = document.createElement('div');
-
-      snow.className = 'snowflake';
-      snow.textContent = snowChars[Math.floor(Math.random() * snowChars.length)];
-
-      snow.style.left = Math.random() * 100 + 'vw';
-      snow.style.fontSize = (Math.random() * 14 + 10) + 'px';
-      snow.style.opacity = Math.random() * .55 + .18;
-      snow.style.animationDuration = (Math.random() * 7 + 5) + 's';
-
-      document.body.appendChild(snow);
-
-      setTimeout(() => snow.remove(), 13000);
-    }
-
-    setInterval(createSnow, 340);
-
-    const bgMusic = document.getElementById('bgMusic');
-    const musicBtn = document.getElementById('musicBtn');
-    const musicBar = document.getElementById('musicBar');
-    const musicTitle = document.getElementById('musicTitle');
-    const musicPlayer = document.getElementById('musicPlayer');
-
-    function updateMusicTitle() {
-      if (!bgMusic.getAttribute('src')) {
-        musicTitle.textContent = 'ใส่ลิงก์เพลงใน audio src';
-        return;
-      }
-
-      const fileName = bgMusic.getAttribute('src').split('/').pop();
-      musicTitle.textContent = fileName || 'Background Music';
-    }
-
-    musicBtn.onclick = async () => {
-      if (!bgMusic.getAttribute('src')) {
-        musicTitle.textContent = 'ยังไม่ได้ใส่ไฟล์เพลง';
-        return;
-      }
-
-      if (bgMusic.paused) {
-        await bgMusic.play();
-        musicBtn.textContent = 'Ⅱ';
-        musicPlayer.classList.add('playing');
-      } else {
-        bgMusic.pause();
-        musicBtn.textContent = '▶';
-        musicPlayer.classList.remove('playing');
-      }
-    };
-
-    bgMusic.ontimeupdate = () => {
-      if (!bgMusic.duration) return;
-
-      const percent = (bgMusic.currentTime / bgMusic.duration) * 100;
-      musicBar.style.width = percent + '%';
-    };
-
-    bgMusic.onended = () => {
-      musicBtn.textContent = '▶';
-      musicPlayer.classList.remove('playing');
-      musicBar.style.width = '0%';
-    };
-
-    updateMusicTitle();
-  </script>
 </body>
 </html>
